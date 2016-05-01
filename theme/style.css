@@ -4001,7 +4001,7 @@ tbody.collapse.in {
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
       background-color: #ddd; }
     .navbar-default .navbar-toggle .icon-bar {
-      background-color: #888; }
+      background-color: white; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
     border-color: #e7e7e7; }
@@ -5834,17 +5834,19 @@ button.close {
 
 .genesis-nav-menu.navbar {
   border: 0;
-  background: rgba(255, 255, 255, 0.16); }
+  background-color: rgba(222, 94, 45, 0.75); }
   .genesis-nav-menu.navbar a, .genesis-nav-menu.navbar li > a {
     font-weight: 700;
     color: white;
     font-size: 1.3em; }
-  .genesis-nav-menu.navbar .navbar-nav {
-    display: inline-block;
-    float: none; }
-  .genesis-nav-menu.navbar .navbar-collapse {
+
+.navbar {
+  display: inline-block;
+  float: none; }
+  .navbar .navbar-collapse {
     text-align: center; }
-    .genesis-nav-menu.navbar .navbar-collapse.in, .genesis-nav-menu.navbar .navbar-collapse.collapsing {
+    .navbar .navbar-collapse.in, .navbar .navbar-collapse.collapsing {
+      background-color: rgba(222, 94, 45, 0.75);
       text-align: left; }
 
 body {

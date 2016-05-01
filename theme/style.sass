@@ -22,6 +22,8 @@ $font-family-base: $font-family-serif
 
 $headings-font-weight: 700
 
+$navbar-default-toggle-icon-bar-bg: white
+
 @import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap'
 @import 'bower_components/sass-mediaqueries/media-queries'
 
@@ -30,20 +32,23 @@ $headings-font-weight: 700
 
 .genesis-nav-menu.navbar 
   border: 0
-  background: rgba(255, 255, 255, 0.16)
+  background-color: rgba($brand-primary, 0.75)
 
   a, li > a
     font-weight: 700
     color: white
     font-size: 1.3em
 
-  .navbar-nav
-    display: inline-block
-    float: none
+
+
+.navbar
+  display: inline-block
+  float: none
 
   .navbar-collapse
     text-align: center
     &.in, &.collapsing
+      background-color: rgba($brand-primary, 0.75)
       text-align: left
 
 body
