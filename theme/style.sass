@@ -1,0 +1,60 @@
+/*
+ * Theme Name: History Miami Theme
+ * Theme URI: https://github.com/PradatiusD/historymiami
+ * Author: https://github.com/PradatiusD/
+ * Author URI: http://pradadesigners.com
+ * Description: Genesis Child Theme Theme for History Miami
+ * Version: 1.0w
+ * Template: genesis  
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Tags: Orange
+ * Text Domain: historymiami
+ * This theme, like WordPress, is licensed under the GPL.
+ * Use it to make something cool, have fun, and share what you've learned with others.
+ */
+
+$brand-primary: #DE5E2D // orange
+$gray-lighter: #E9E3DB // tan
+
+$font-family-serif: 'Lora', Georgia, "Times New Roman", Times, serif
+$font-family-base: $font-family-serif
+
+
+@import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap.scss'
+
+.site-header
+  display: none
+
+.genesis-nav-menu.navbar 
+  border: 0
+  background: none
+
+  .navbar-nav
+    display: inline-block
+    float: none
+
+  .navbar-collapse
+    text-align: center
+
+// Genesis Bootstrap Layout
+.site-inner, .site-footer .wrap
+  @extend .container
+
+.content-sidebar-wrap
+  @extend .row
+
+  .content
+    @extend .col-md-9
+
+  .sidebar
+    @extend .col-md-3
+
+.site-footer 
+  margin-top: 2em
+  padding-top: 1em
+  background-color: $gray-lighter
+  color: #947D60
+
+  .wrap
+    text-align: center

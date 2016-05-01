@@ -1,0 +1,27 @@
+{
+  "name": "historymiami",
+  "version": "1.0.0",
+  "description": "OLD IP: 69.20.113.165",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PradatiusD/historymiami.git"
+  },
+  "author": "https://github.com/PradatiusD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PradatiusD/historymiami/issues"
+  },
+  "homepage": "https://github.com/PradatiusD/historymiami#readme",
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-php": "^1.5.1",
+    "load-grunt-tasks": "^3.5.0"
+  }
+}
