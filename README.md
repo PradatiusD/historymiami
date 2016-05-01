@@ -33,3 +33,10 @@ mysql> show columns from plugin_events_events;
 HistoryMiami
 101 West Flagler Street
 Miami, FL 33130
+
+<a href="http://www.facebook.com/historymiami360" target="_blank"><i class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+<a href="http://www.twitter.com/historymiami" target="_blank"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
+<a href="http://www.flickr.com/photos/historymiami" target="_blank"><i class="fa fa-2x fa-flickr" aria-hidden="true"></i></a>
+<a href="http://www.youtube.com/historymiami" target="_blank"><i class="fa fa-2x fa-youtube" aria-hidden="true"></i></a>
+<a href="http://foursquare.com/venue/1357011" target="_blank"><i class="fa fa-2x fa-foursquare" aria-hidden="true"></i></a>
+<a href="http://www.tripadvisor.com/Attraction_Review-g34438-d592101-Reviews-HistoryMiami-Miami_Florida.html" target="_blank"><i class="fa fa-2x fa-tripadvisor" aria-hidden="true"></i></a>

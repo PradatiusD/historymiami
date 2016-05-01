@@ -26,6 +26,7 @@ function homepage_events() {
             <?php the_title();?>
           </a>
         </h3>
+        <small><?php the_date();?></small>
       </article>
       <?php
     }  

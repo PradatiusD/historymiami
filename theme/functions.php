@@ -45,8 +45,20 @@ function sp_footer_creds_filter( $creds ) {
 
 
 function museum_image() {
+  $has_thumbnail = is_single() && has_post_thumbnail() ? true: false;
+  $background_image = '';
+
+  if ($has_thumbnail) {
+    $thumb_id = get_post_thumbnail_id();
+    $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
+    $background_image = $thumb_url_array[0];
+
+  } else {
+    $background_image = get_stylesheet_directory_uri().'/images/buidling-exterior.jpg';
+  }
   ?>
-  <div class="featured-image"></div>
+
+  <div class="featured-image" <?php echo "style=\"background-image:url(".$background_image.")\""?> ></div>
   <?php
 }
 

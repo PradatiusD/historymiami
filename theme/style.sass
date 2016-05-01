@@ -21,6 +21,7 @@ $font-family-serif: 'Lora', Georgia, "Times New Roman", Times, serif
 $font-family-base: $font-family-serif
 
 $headings-font-weight: 700
+$font-size-base: 17px
 
 $navbar-default-toggle-icon-bar-bg: white
 
@@ -37,9 +38,6 @@ $navbar-default-toggle-icon-bar-bg: white
   a, li > a
     font-weight: 700
     color: white
-    font-size: 1.3em
-
-
 
 .navbar
   display: inline-block
@@ -93,6 +91,8 @@ body
   .widget-area
     @extend .col-sm-3
 
+  .fa
+    margin-right: 8px
 
 .site-footer 
   .wrap
@@ -101,8 +101,7 @@ body
     text-align: center
 
 .featured-image
-  background-image: url("images/building-exterior.jpg")
-  background-position: center bottom
+  background-position: center
   background-repeat: no-repeat
   background-size: cover
   width: 100%
