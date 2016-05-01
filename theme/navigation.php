@@ -5,7 +5,7 @@ class Navigation {
   public static function insert_bootstrap_classes($nav_output, $nav, $args) {
     ob_start();
     ?>
-      <nav class="navbar navbar-default genesis-nav-menu">
+      <nav class="navbar navbar-default navbar-fixed-top genesis-nav-menu">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -32,6 +32,7 @@ class Navigation {
   }
 }
 
-add_filter( 'genesis_do_nav', array('Navigation','insert_bootstrap_classes'), 10, 3);
+add_filter('genesis_do_nav', array('Navigation','insert_bootstrap_classes'), 10, 3);
+wp_enqueue_script( 'bootstrap-nav', get_stylesheet_directory_uri().'/global.min.js', array('jquery'), '1.0.0', true );
 
 ?>

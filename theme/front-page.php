@@ -14,6 +14,9 @@ function homepage_events() {
 
   // The Loop
   if ($event_query->have_posts()) {
+    ?>
+    <h1>Current Events</h1>
+    <?php
     while ( $event_query->have_posts() ) {
       $event_query->the_post();
       ?>

@@ -31,5 +31,23 @@ include_once("navigation.php");
 include_once("utilities.php");
 Utilities::local_livereload();
 
+// Header Stylesheets
+wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic',    array(), '1.0.0');
+wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0');
 
-wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic', array(), '1.0.0', true );
+
+
+add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+function sp_footer_creds_filter( $creds ) {
+  $creds = '&copy; HistoryMiami. All rights reserved.';
+  return $creds;
+}
+
+
+function museum_image() {
+  ?>
+  <div class="featured-image"></div>
+  <?php
+}
+
+add_action('genesis_after_header','museum_image');

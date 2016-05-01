@@ -55,6 +55,19 @@ module.exports = function(grunt) {
     }
   };
 
+
+  options.uglify = {
+    global: {
+      files: {
+        'theme/global.min.js': [
+          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js',
+          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
+          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js'
+        ]
+      }
+    }
+  };
+
   grunt.initConfig(options);
   require('load-grunt-tasks')(grunt);
 

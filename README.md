@@ -29,3 +29,7 @@ mysql> show columns from plugin_events_events;
 | end_time             | time         | YES  |     | NULL    |                             |
 +----------------------+--------------+------+-----+---------+-----------------------------+
 ```
+
+HistoryMiami
+101 West Flagler Street
+Miami, FL 33130

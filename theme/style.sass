@@ -20,15 +20,22 @@ $gray-lighter: #E9E3DB // tan
 $font-family-serif: 'Lora', Georgia, "Times New Roman", Times, serif
 $font-family-base: $font-family-serif
 
+$headings-font-weight: 700
 
-@import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap.scss'
+@import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap'
+@import 'bower_components/sass-mediaqueries/media-queries'
 
 .site-header
   display: none
 
 .genesis-nav-menu.navbar 
   border: 0
-  background: none
+  background: rgba(255, 255, 255, 0.16)
+
+  a, li > a
+    font-weight: 700
+    color: white
+    font-size: 1.3em
 
   .navbar-nav
     display: inline-block
@@ -36,6 +43,20 @@ $font-family-base: $font-family-serif
 
   .navbar-collapse
     text-align: center
+    &.in, &.collapsing
+      text-align: left
+
+body
+  -webkit-font-smoothing: antialiased
+  // padding-top: 55px
+
+  &.logged-in
+    .navbar-fixed-top
+      margin-top: 32px
+
+      +max-screen(782px)
+        margin-top: 46px
+
 
 // Genesis Bootstrap Layout
 .site-inner, .site-footer .wrap
@@ -50,11 +71,34 @@ $font-family-base: $font-family-serif
   .sidebar
     @extend .col-md-3
 
-.site-footer 
-  margin-top: 2em
-  padding-top: 1em
+
+// Footer
+.site-footer, .footer-widgets
   background-color: $gray-lighter
   color: #947D60
 
+.footer-widgets
+  border-top: 1px solid #DBD5CD
+  margin-top: 2em
+  padding-top: 0.5em
+
   .wrap
+    @extend .container
+
+  .widget-area
+    @extend .col-sm-3
+
+
+.site-footer 
+  .wrap
+    border-top: 1px solid #DBD5CD
+    padding-top: 0.5em
     text-align: center
+
+.featured-image
+  background-image: url("images/building-exterior.jpg")
+  background-position: center bottom
+  background-repeat: no-repeat
+  background-size: cover
+  width: 100%
+  height: 595px
