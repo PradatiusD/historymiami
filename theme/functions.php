@@ -21,6 +21,16 @@ add_theme_support('custom-background');
 //* Add support for 3-column footer widgets
 add_theme_support('genesis-footer-widgets', 4);
 
+
+//* Add Post Thumbnails
+add_theme_support( 'post-thumbnails' );
+
+//* Unregister Header Right & Sidebar Widget Areas
+unregister_sidebar( 'header-right' );
+unregister_sidebar( 'sidebar-alt' );
+
+
+
 //* Remove Post Meta (Example Filed under: )
 remove_action('genesis_entry_footer', 'genesis_post_meta');
 
@@ -36,6 +46,16 @@ wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Lora:400,400
 wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0');
 
 
+function meta_imagery () {
+  ?>
+    <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri();?>/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri();?>/favicon.ico" type="image/x-icon" />
+  <?php
+}
+
+add_action('wp_head','meta_imagery');
+
+
 
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
 function sp_footer_creds_filter( $creds ) {
@@ -45,21 +65,15 @@ function sp_footer_creds_filter( $creds ) {
 
 
 function museum_image() {
-  $has_thumbnail = is_single() && has_post_thumbnail() ? true: false;
-  $background_image = '';
+  $id = get_the_id();
 
-  if ($has_thumbnail) {
-    $thumb_id = get_post_thumbnail_id();
+  $thumb_id = get_post_thumbnail_id($id);
+
+  if ($thumb_id &&  (is_page($id) || is_singular())) {
     $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'full', true);
     $background_image = $thumb_url_array[0];
-
-  } else {
-    $background_image = get_stylesheet_directory_uri().'/images/buidling-exterior.jpg';
+    echo "<div class=\"featured-image\" style=\"background-image:url(".$background_image.")\"></div>";    
   }
-  ?>
-
-  <div class="featured-image" <?php echo "style=\"background-image:url(".$background_image.")\""?> ></div>
-  <?php
 }
 
 add_action('genesis_after_header','museum_image');

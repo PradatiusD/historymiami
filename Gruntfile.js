@@ -86,7 +86,7 @@ module.exports = function(grunt) {
       src: 'theme',
       dest: package.name,
       forceVerbose: true,
-      exclusions: ['theme/bower_components']
+      exclusions: ['theme/bower_components', 'theme/images']
     }
   };
 
