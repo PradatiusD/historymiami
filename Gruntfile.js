@@ -27,11 +27,17 @@ module.exports = function(grunt) {
 
 
   options.copy = {
-    main: {
+    theme: {
       expand: true,
       cwd: 'theme',
       src: ['**','!bower_components/**'],
-      dest: process.env.THEME_FOLDER_PATH+package.name,
+      dest: process.env.THEME_FOLDER_PATH+package.name
+    },
+    plugin: {
+      expand: true,
+      cwd: 'plugin',
+      src: ['**'],
+      dest: process.env.PLUGIN_FOLDER_PATH+package.name      
     }
   };
 
@@ -68,10 +74,28 @@ module.exports = function(grunt) {
     }
   };
 
+
+  options['ftp-deploy'] = {
+    build: {
+      auth: {
+        host:     process.env.FTP_HOST,
+        username: process.env.FTP_USERNAME,
+        password: process.env.FTP_PASSWORD,
+        port: 21
+      },
+      src: 'theme',
+      dest: package.name,
+      forceVerbose: true,
+      exclusions: ['theme/bower_components']
+    }
+  };
+
   grunt.initConfig(options);
   require('load-grunt-tasks')(grunt);
 
   // Default task(s).
   grunt.registerTask('default', ['watch']);
+
+  grunt.registerTask('ftp', ['ftp-deploy']);
 
 };
