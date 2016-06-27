@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 //* Start the Genesis Engine
 include_once( get_template_directory() . '/lib/init.php' );
 
@@ -42,7 +46,7 @@ include_once("utilities.php");
 Utilities::local_livereload();
 
 // Header Stylesheets
-wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic',    array(), '1.0.0');
+wp_enqueue_style( 'google-font', '//fast.fonts.net/cssapi/12c72165-1a50-4e78-97ed-8e1ee71db526.css',      array(), '1.0.0');
 wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0');
 
 
@@ -54,6 +58,36 @@ function meta_imagery () {
 }
 
 add_action('wp_head','meta_imagery');
+
+
+add_filter( 'genesis_nav_items', 'be_follow_icons', 10, 2 );
+add_filter( 'wp_nav_menu_items', 'be_follow_icons', 10, 2 );
+
+function be_follow_icons($menu, $args) {
+  if ($args->theme_location !== 'primary') {
+    return $menu;
+  }
+
+  $providers = array(
+    array("icon" => "facebook",    "url"  => "http://www.facebook.com/historymiami360"),     
+    array("icon" => "twitter",     "url"  => "http://www.twitter.com/historymiami"),  
+    array("icon" => "flickr",      "url"  => "http://www.flickr.com/photos/historymiami"),
+    array("icon" => "youtube",     "url"  => "http://www.youtube.com/historymiami"),
+    array("icon" => "foursquare",  "url"  => "http://foursquare.com/venue/1357011"),
+    array("icon" => "tripadvisor", "url"  => "http://www.tripadvisor.com/Attraction_Review-g34438-d592101-Reviews-HistoryMiami-Miami_Florida.html")
+  );
+
+
+  $social = '';
+
+  foreach ($providers as $provider) {
+    $social .= '<li class="menu-item menu-item-type-custom menu-item-object-custom"><a><i class="fa fa-'.$provider["icon"].'"></i></a></li>';
+    # code...
+  }
+
+  // $social = '<li id="social" ><a href="#">social: RSS and Twitter</a></li>';
+  return $menu . $social;
+}
 
 
 

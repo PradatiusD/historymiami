@@ -8,19 +8,20 @@
  * Template: genesis  
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Tags: Orange
+ * Tags: Black
  * Text Domain: historymiami
  * This theme, like WordPress, is licensed under the GPL.
  * Use it to make something cool, have fun, and share what you've learned with others.
  */
 
-$brand-primary: #F26522 // orange
-$gray-lighter: #E9E3DB // tan
+$brand-primary: black // black
+$gray-lighter: gray  // gray
 
-$font-family-serif: 'Lora', Georgia, "Times New Roman", Times, serif
-$font-family-base: $font-family-serif
+$navbar-inverse-link-color: white
 
-$headings-font-weight: 700
+$font-family-sans-serif: 'Proxima Nova W08 Reg', "Helvetica Neue", Helvetica, Arial, sans-serif
+$headings-font-family: 'Proxima N W15 Smbd'
+
 $font-size-base: 17px
 
 $navbar-default-toggle-icon-bar-bg: white
@@ -28,6 +29,9 @@ $navbar-default-toggle-icon-bar-bg: white
 @import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap'
 @import 'bower_components/sass-mediaqueries/media-queries'
 
+
+ul.nav li.dropdown:hover > ul.dropdown-menu
+  display: block
 
 .navbar-brand
   width: 300px
@@ -42,10 +46,10 @@ $navbar-default-toggle-icon-bar-bg: white
 .genesis-nav-menu.navbar 
   border: 0
   background-color: $brand-primary
+  
+  .dropdown-menu a
+    color: black
 
-  a, li > a
-    font-weight: 700
-    color: white
 
 .navbar
   display: inline-block
@@ -85,11 +89,11 @@ body
 
 // Footer
 .site-footer, .footer-widgets
-  background-color: $gray-lighter
-  color: #947D60
+  background-color: black
+  color: white
 
 .footer-widgets
-  border-top: 1px solid #DBD5CD
+  border-top: 1px solid gray
   margin-top: 2em
   padding-top: 0.5em
 
@@ -101,10 +105,11 @@ body
 
   .fa
     margin-right: 8px
+    color: white
 
 .site-footer 
   .wrap
-    border-top: 1px solid #DBD5CD
+    border-top: 1px solid gray
     padding-top: 0.5em
     text-align: center
 
