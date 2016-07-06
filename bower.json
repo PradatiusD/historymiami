@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "sass-mediaqueries": "^1.6.1"
+    "sass-mediaqueries": "^1.6.1",
+    "Swiper": "swiper#^3.3.1"
   }
 }

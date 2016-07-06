@@ -39,7 +39,7 @@ unregister_sidebar( 'sidebar-alt' );
 remove_action('genesis_entry_footer', 'genesis_post_meta');
 
 //* Unregister Secondary Navigation
-add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
+add_theme_support('genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis')));
 
 include_once("navigation.php");
 include_once("utilities.php");
@@ -81,11 +81,9 @@ function be_follow_icons($menu, $args) {
   $social = '';
 
   foreach ($providers as $provider) {
-    $social .= '<li class="menu-item menu-item-type-custom menu-item-object-custom"><a><i class="fa fa-'.$provider["icon"].'"></i></a></li>';
-    # code...
+    $social .= '<li class="menu-item menu-item-type-custom menu-item-social menu-item-object-custom"><a><i class="fa fa-'.$provider["icon"].'"></i></a></li>';
   }
 
-  // $social = '<li id="social" ><a href="#">social: RSS and Twitter</a></li>';
   return $menu . $social;
 }
 

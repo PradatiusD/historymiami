@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   options.watch = {
     theme: {
       files: ['theme/**','!'+sassFile],
-      tasks: ['copy'],
+      tasks: ['copy:theme'],
       options: {
         livereload: true,
       }
@@ -27,10 +27,16 @@ module.exports = function(grunt) {
 
 
   options.copy = {
+    themeAll: {
+      expand: true,
+      cwd: 'theme',
+      src: ['**'],
+      dest: process.env.THEME_FOLDER_PATH+package.name
+    },
     theme: {
       expand: true,
       cwd: 'theme',
-      src: ['**','!bower_components/**'],
+      src: ['**','!images/**', '!bower_components/**'],
       dest: process.env.THEME_FOLDER_PATH+package.name
     },
     plugin: {
@@ -97,5 +103,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['watch']);
 
   grunt.registerTask('ftp', ['ftp-deploy']);
+  grunt.registerTask('copyAll',['copy:themeAll']);
 
 };
