@@ -17,6 +17,9 @@
 $brand-primary: black // black
 $gray-lighter: gray  // gray
 
+
+$orange: #DE5E2D
+
 $navbar-inverse-link-color: white
 
 $proxima_semibold: 'Proxima N W15 Smbd'
@@ -27,17 +30,30 @@ $headings-font-family: $proxima_semibold
 
 $font-size-base: 17px
 
-$navbar-default-toggle-icon-bar-bg: white
+$navbar-default-color: black
+$navbar-default-link-color: black
+$navbar-default-bg: white
+
+$navbar-height: 66px
+$navbar-padding-horizontal: 0.66em
+
+$navbar-default-toggle-icon-bar-bg: black
 $grid-float-breakpoint: 870px
 
+@import 'bower_components/bourbon/app/assets/stylesheets/bourbon'
 @import 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap'
 @import 'bower_components/sass-mediaqueries/media-queries'
+
+a
+  &:hover
+    color: #DE5E2D
 
 
 ul.nav li.dropdown:hover > ul.dropdown-menu
   display: block
 
 .navbar-brand
+  margin-left: 0 !important
   width: 300px
   background: url('images/logo.png')
   background-size: 300px
@@ -49,7 +65,6 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
 
 .genesis-nav-menu.navbar 
   border: 0
-  background-color: $brand-primary
   
   .dropdown-menu a
     color: black
@@ -59,10 +74,12 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
   display: inline-block
   float: none
 
+  .container-fluid
+    border-bottom: 1px solid #ececec
+
   .navbar-collapse
     text-align: center
     &.in, &.collapsing
-      background-color: rgba($brand-primary, 0.75)
       text-align: left
 
   .menu-item-social
@@ -102,10 +119,16 @@ body
   background-color: black
   color: white
 
+
+
 .footer-widgets
   border-top: 1px solid gray
   margin-top: 2em
   padding-top: 0.5em
+
+  body.home & 
+    margin-top: 0
+    padding-top: 0
 
   .wrap
     @extend .container
@@ -140,14 +163,27 @@ body.home .site-inner
   width: 100%
   height: 640px
 
+
+
 .swiper-slide
+
+  &.swiper-slide-active 
+    h3 a .title, h3 a .subtitle, .swiper-dates, .badge
+      +transform(translate(0,0))
+      opacity: 1
+
   background-repeat: no-repeat
   background-size: cover
   background-position: center top
 
+  .container
+    position: relative
+    height: 100%
+
   .swiper-overlay
-    margin-top: 30%
-    margin-right: 30%
+    position: absolute
+    bottom: 10%
+    left: 15px
     background: rgba(0, 0, 0, 0.78)
     padding: 2em 1.5em 1.5em 1.5em
 
@@ -158,6 +194,7 @@ body.home .site-inner
   h3
     font-size: 3.5em
     margin-bottom: 0
+    margin-top: 0.125em
     +max-screen(1140px)
       font-size: 2em
 
@@ -168,19 +205,30 @@ body.home .site-inner
       &:hover
         text-decoration: none
 
-      .title
-        line-height: 0.6em
+      .title, .subtitle
         display: block
+        opacity: 0
+
+      .title
+        +transition(all 0.6s ease-out)
+        +transform(translate(-400px, 0))
 
       .subtitle
+        +transition(all 0.6s 0.5s ease-out)
+        +transform(translate(300px, 0))
         font-family: $proxima_regular, 'Helvetica Neue'
         font-size: 0.66em
+        margin-bottom: 0.5em
 
 
   .swiper-dates
+    +transition(all 0.6s 1.5s ease-out)
+    +transform(translate(0, 100px))
+    opacity: 0
     color: white
     margin-left: 0.5em
     font-size: 1.2em
+    display: inline-block
     position: relative
     top: 2px
     +max-screen(1140px)
@@ -191,6 +239,9 @@ body.home .site-inner
 
 
   .badge
+    +transition(all 0.6s 1.0s ease-out)
+    +transform(translate(0, 100px))
+    opacity: 0
     border-radius: 0
     text-transform: uppercase
     background-color: white

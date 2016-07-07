@@ -71,12 +71,8 @@ function be_follow_icons($menu, $args) {
   $providers = array(
     array("icon" => "facebook",    "url"  => "http://www.facebook.com/historymiami360"),     
     array("icon" => "twitter",     "url"  => "http://www.twitter.com/historymiami"),  
-    array("icon" => "flickr",      "url"  => "http://www.flickr.com/photos/historymiami"),
-    array("icon" => "youtube",     "url"  => "http://www.youtube.com/historymiami"),
-    array("icon" => "foursquare",  "url"  => "http://foursquare.com/venue/1357011"),
-    array("icon" => "tripadvisor", "url"  => "http://www.tripadvisor.com/Attraction_Review-g34438-d592101-Reviews-HistoryMiami-Miami_Florida.html")
-  );
-
+    array("icon" => "instagram",   "url"  => "https://www.instagram.com/historymiami/")
+ );
 
   $social = '';
 

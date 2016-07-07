@@ -5,7 +5,7 @@ class Navigation {
   public static function insert_bootstrap_classes($nav_output, $nav, $args) {
     ob_start();
     ?>
-      <nav class="navbar navbar-inverse navbar-fixed-top genesis-nav-menu">
+      <nav class="navbar navbar-default navbar-fixed-top genesis-nav-menu">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
