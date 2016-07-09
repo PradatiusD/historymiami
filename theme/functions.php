@@ -5,12 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 //* Start the Genesis Engine
-include_once( get_template_directory() . '/lib/init.php' );
+include_once(get_template_directory() . '/lib/init.php' );
 
 //* Child theme (do not remove)
-define( 'CHILD_THEME_NAME', 'History Miami Child Theme' );
-define( 'CHILD_THEME_URL', 'http://github.com/PradatiusD/historymiami' );
-define( 'CHILD_THEME_VERSION', '1.0.0' );
+define('CHILD_THEME_NAME', 'History Miami Child Theme');
+define('CHILD_THEME_URL', 'http://github.com/PradatiusD/historymiami');
+define('CHILD_THEME_VERSION', '1.0.0');
 
 
 //* Add HTML5 markup structure
@@ -25,15 +25,12 @@ add_theme_support('custom-background');
 //* Add support for 3-column footer widgets
 add_theme_support('genesis-footer-widgets', 4);
 
-
 //* Add Post Thumbnails
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 
 //* Unregister Header Right & Sidebar Widget Areas
-unregister_sidebar( 'header-right' );
-unregister_sidebar( 'sidebar-alt' );
-
-
+unregister_sidebar('header-right');
+unregister_sidebar('sidebar-alt');
 
 //* Remove Post Meta (Example Filed under: )
 remove_action('genesis_entry_footer', 'genesis_post_meta');
@@ -84,7 +81,6 @@ function be_follow_icons($menu, $args) {
 }
 
 
-
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
 function sp_footer_creds_filter( $creds ) {
   $creds = '&copy; HistoryMiami. All rights reserved.';
@@ -92,6 +88,7 @@ function sp_footer_creds_filter( $creds ) {
 }
 
 
+add_action('genesis_after_header','museum_image');
 function museum_image() {
   $id = get_the_id();
 
@@ -104,4 +101,23 @@ function museum_image() {
   }
 }
 
-add_action('genesis_after_header','museum_image');
+
+add_filter( 'genesis_post_info', 'sp_post_info_filter' );
+function sp_post_info_filter($post_info) {
+  if ( !is_page()) {
+
+    $post_types = array('exhibition','event','city-tour');
+    $post_type  = get_post_type();
+    $post_info  = '';
+
+    if (in_array($post_type, $post_types)) {
+      $post_info .= Utilities::get_post_dates();
+    } else {
+      $post_info = '[post_date]';
+    }
+
+    $post_info .= " [post_edit]";
+
+    return $post_info;
+  }
+}

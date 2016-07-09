@@ -1,25 +1,5 @@
 <?php
 
-function format_date_text($start_time, $end_time) {
-
-  $start_t = new DateTime();
-  $start_t->setTimestamp($start_time);
-
-  $end_t   = new DateTime();
-  $end_t->setTimestamp($end_time);
-
-  $calendar_f = 'Y-m-d';
-
-  $same_day = ($start_t->format($calendar_f) == $end_t->format($calendar_f));
-
-  if ($same_day) {
-    return $start_t->format('l M j, Y g:i A') . "-" . $end_t->format('g:i A');
-  } else {
-    return $start_t->format('l M j, Y') . "-" . $end_t->format('l M j, Y');
-  }
-}
-
-
 function homepage_slider() {
 
   $args = array(
@@ -49,12 +29,7 @@ function homepage_slider() {
         $title = $post_title;
       }
 
-      $date_format = array(
-        "output"=>"raw",
-      );
 
-      $start_time = types_render_field("start-time",$date_format);
-      $end_time   = types_render_field("end-time",$date_format);
 
     ?>
 
@@ -73,7 +48,7 @@ function homepage_slider() {
               </h3>
               <span class="badge"><?php echo get_post_type();?></span>
               <small class="swiper-dates">
-                <?php echo format_date_text($start_time, $end_time); ?>
+                <?php echo Utilities::get_post_dates(); ?>
               </small>
             </div>
           </div>

@@ -76,7 +76,7 @@ class Social_Widget extends WP_Widget {
     <h4 class="widget-title">Connect with Us</h4>
       <?php foreach ($icons as $icon):?>
           <a target="_blank" href="<?php echo $icon['url'];?>">
-            <i class="fa fa-2x fa-<?php echo $icon['icon'];?>" aria-hidden="true"></i>
+            <i class="fa fa-<?php echo $icon['icon'];?>" aria-hidden="true"></i>
           </a>
       <?php endforeach;?>
 

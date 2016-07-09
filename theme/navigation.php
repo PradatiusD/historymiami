@@ -18,7 +18,7 @@ class Navigation {
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <?php 
-              $nav = str_replace('genesis-nav-menu', 'nav navbar-nav', $nav);
+              $nav = str_replace('genesis-nav-menu', 'nav navbar-nav navbar-right', $nav);
               $nav = str_replace('menu-item-has-children', 'dropdown', $nav);
               $nav = str_replace('sub-menu','dropdown-menu', $nav);
               echo $nav;

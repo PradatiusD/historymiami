@@ -31,19 +31,19 @@ module.exports = function(grunt) {
       expand: true,
       cwd: 'theme',
       src: ['**'],
-      dest: process.env.THEME_FOLDER_PATH+package.name
+      dest: process.env.THEME_FOLDER_PATH + package.name
     },
     theme: {
       expand: true,
       cwd: 'theme',
       src: ['**','!images/**', '!bower_components/**'],
-      dest: process.env.THEME_FOLDER_PATH+package.name
+      dest: process.env.THEME_FOLDER_PATH + package.name
     },
     plugin: {
       expand: true,
       cwd: 'plugin',
       src: ['**'],
-      dest: process.env.PLUGIN_FOLDER_PATH+package.name      
+      dest: process.env.PLUGIN_FOLDER_PATH + package.name      
     }
   };
 
@@ -82,7 +82,19 @@ module.exports = function(grunt) {
 
 
   options['ftp-deploy'] = {
-    build: {
+    incremental: {
+      auth: {
+        host:     process.env.FTP_HOST,
+        username: process.env.FTP_USERNAME,
+        password: process.env.FTP_PASSWORD,
+        port: 21
+      },
+      src: 'theme',
+      dest: package.name,
+      forceVerbose: true,
+      exclusions: ['theme/bower_components', 'theme/images']
+    },
+    all: {
       auth: {
         host:     process.env.FTP_HOST,
         username: process.env.FTP_USERNAME,
@@ -102,7 +114,9 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['watch']);
 
-  grunt.registerTask('ftp', ['ftp-deploy']);
-  grunt.registerTask('copyAll',['copy:themeAll']);
+  grunt.registerTask('ftp', ['ftp-deploy:incremental']);
+  grunt.registerTask('deploy', ['ftp-deploy:incremental']);
+  grunt.registerTask('deployAll', ['ftp-deploy:all']);
 
+  grunt.registerTask('copyAll',['copy:themeAll']);
 };
