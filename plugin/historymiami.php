@@ -97,7 +97,7 @@ class Affiliate_Widget extends WP_Widget {
   function widget( $args, $instance ) {
     ob_start();?>
     <h4 class="widget-title">Affiliates</h4>
-    <img src="<?php echo get_stylesheet_directory_uri().'/images/logo_smithsonian.png';?>" class="img-responsive">
+    <img src="<?php echo get_stylesheet_directory_uri().'/images/smithsonian-logo.png';?>" class="img-responsive">
     <?php
     echo ob_get_clean();
   }

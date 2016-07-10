@@ -1,6 +1,9 @@
 <?php
 
 class Utilities {
+
+  public static $custom_post_types  = array('exhibition','event','city-tour');
+  public static $availability_types =  array('past','current','upcoming');
  
   public static function local_livereload () {
 
@@ -17,6 +20,7 @@ class Utilities {
       add_action( 'wp_enqueue_scripts', 'local_livereload');
     }  
   }
+
 
   public static function format_date_text($start_time, $end_time) {
 
@@ -37,6 +41,14 @@ class Utilities {
     }
   }
 
+
+  public static function get_timestamp () {
+    $today = date_create();
+    $timestamp = date_timestamp_get($today);
+    return $timestamp;
+  }
+
+
   public static function get_post_dates () {
 
     $date_format = array(
@@ -47,5 +59,20 @@ class Utilities {
     $end_time   = types_render_field("end-time",$date_format);
 
     return self::format_date_text($start_time, $end_time);
+  }
+
+  public static function split_post_title ($post_title) {
+
+    $colon_pos = strpos($post_title, ':');
+    $output    = array();
+
+    if ($colon_pos !== false) {
+      $output["title"] = substr($post_title, 0, $colon_pos);
+      $output["subtitle"] = substr($post_title, $colon_pos + 1, strlen($post_title));
+    } else {
+      $output["title"] = $post_title;
+    }
+
+    return $output;
   }
 }

@@ -17,7 +17,7 @@
 $brand-primary: black // black
 $gray-lighter: gray  // gray
 
-$orange: #DE5E2D
+$orange: #f26522 // History Miami Logo
 
 $navbar-inverse-link-color: white
 
@@ -76,7 +76,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
 .navbar-brand
   margin-left: 0 !important
   width: 300px
-  background: url('images/logo.png')
+  background: url('images/historymiami-logo.png')
   background-size: 300px
   background-repeat: no-repeat
   background-position: center center  
@@ -170,7 +170,34 @@ body.home .site-inner
   padding: 0
   overflow-x: hidden
 
-/* Slider */
+/* Content */
+article.entry
+  margin-bottom: 1em
+
+  .entry-meta
+    @extend .text-muted
+    font-size: 1.2em
+
+  .entry-title
+    padding: 100px 2em 1em 0.5em
+    background-repeat: no-repeat
+    background-position: top center
+    background-size: cover
+    a
+      color: white
+      background: rgba(darken($orange, 20%), 0.75)
+      display: block
+      padding: 0.5em
+    .title
+      display: block
+      font-size: 1.3em
+    .subtitle
+      display: block
+      font-family: $proxima_regular
+      font-size: 0.9em
+
+
+/* Swiper Slider */
 .swiper-container
   width: 100%
   height: 640px
@@ -194,8 +221,8 @@ body.home .site-inner
     position: absolute
     bottom: 25%
     left: 15px
-    background: rgba(0, 0, 0, 0.78)
-    padding: 2em 1.5em 1.5em 1.5em
+    background: rgba(darken($orange, 20%), 0.75)
+    padding: 2em 2em 1.5em 1.5em
 
     +max-screen(1140px)
       margin-right: 0

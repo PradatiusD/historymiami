@@ -2,8 +2,25 @@
 
 function homepage_slider() {
 
+  $timestamp = Utilities::get_timestamp();
+
   $args = array(
-    'post_type' => array('exhibition','event')
+    "post_type"  => array("exhibition","event"),
+    "orderby"    => "meta_value_num",
+    "meta_key"   => "wpcf-end-time",
+    'order'     => 'ASC',
+    "meta_query" => array(
+        array(
+          "key" => "wpcf-start-time",
+          "value" => $timestamp,
+          "compare" => "<="
+        ),
+        array(
+          "key" => "wpcf-end-time",
+          "value" => $timestamp,
+          "compare" => ">="
+        )
+      )
   );
 
   // The Query
@@ -20,16 +37,7 @@ function homepage_slider() {
 
       $post_title = get_the_title();
 
-      $colon_pos  = strpos($post_title, ':');
-
-      if ($colon_pos !== false) {
-        $title = substr($post_title, 0, $colon_pos + 1);
-        $subtitle = substr($post_title, $colon_pos + 1, strlen($post_title));
-      } else {
-        $title = $post_title;
-      }
-
-
+      $post_title = Utilities::split_post_title($post_title);
 
     ?>
 
@@ -39,9 +47,9 @@ function homepage_slider() {
               <h3>
                 <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                   <?php 
-                    echo '<span class="title">'.$title.'</span>';
-                    if (isset($subtitle)) {
-                      echo '<span class="subtitle">'.$subtitle.'</span>';
+                    echo '<span class="title">'.$post_title["title"].'</span>';
+                    if (isset($post_title["subtitle"])) {
+                      echo '<span class="subtitle">'.$post_title["subtitle"].'</span>';
                     }
                   ?>
                 </a>

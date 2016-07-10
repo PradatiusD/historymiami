@@ -103,20 +103,19 @@ module.exports = function(grunt) {
       },
       src: 'theme',
       dest: package.name,
-      forceVerbose: true,
-      exclusions: ['theme/bower_components', 'theme/images']
+      forceVerbose: true
     }
   };
 
   grunt.initConfig(options);
   require('load-grunt-tasks')(grunt);
 
-  // Default task(s).
+
   grunt.registerTask('default', ['watch']);
 
-  grunt.registerTask('ftp', ['ftp-deploy:incremental']);
+  grunt.registerTask('ftp',    ['ftp-deploy:incremental']);
   grunt.registerTask('deploy', ['ftp-deploy:incremental']);
-  grunt.registerTask('deployAll', ['ftp-deploy:all']);
 
-  grunt.registerTask('copyAll',['copy:themeAll']);
+  grunt.registerTask('deployAll', ['ftp-deploy:all']);
+  grunt.registerTask('copyAll',   ['copy:themeAll']);
 };

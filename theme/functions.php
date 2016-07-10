@@ -106,7 +106,7 @@ add_filter( 'genesis_post_info', 'sp_post_info_filter' );
 function sp_post_info_filter($post_info) {
   if ( !is_page()) {
 
-    $post_types = array('exhibition','event','city-tour');
+    $post_types = Utilities::$custom_post_types;
     $post_type  = get_post_type();
     $post_info  = '';
 
@@ -120,4 +120,97 @@ function sp_post_info_filter($post_info) {
 
     return $post_info;
   }
+}
+
+
+remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+add_action( 'genesis_entry_header', 'genesis_do_post_title_with_image');
+function genesis_do_post_title_with_image () {
+
+  ob_start();
+  genesis_do_post_title();
+  $post_title = ob_get_clean();
+
+  if (is_archive() && has_post_thumbnail()) {
+    $search = "entry-title";
+    $replace = $search . '" style="background-image: url(\''. get_the_post_thumbnail_url(). '\')';
+    $post_title = str_replace("entry-title", $replace, $post_title);
+  }
+
+  $pattern = "/<a.*>(.*?)<\/a>/";
+  preg_match($pattern, $post_title, $matches);
+
+  if (sizeof($matches) > 0) {
+    $title = $matches[1];
+    $title = Utilities::split_post_title($title);
+
+    $split_title = '';
+
+    $split_title .= '<a href="'.get_the_permalink().' rel="bookmark"><span class="title">'.$title["title"].'</span>';
+    if (isset($title["subtitle"])) {
+      $split_title .= '<span class="subtitle">'.$title["subtitle"].'</span></a>';
+    }
+
+    $post_title = preg_replace($pattern, $split_title, $post_title);
+  }
+
+  echo $post_title;
+}
+
+
+add_filter('pre_get_posts', 'available_post_type');
+function available_post_type ($query) {
+
+  $query_has_type = isset($query->query_vars["post_type"]);
+
+  if (!is_main_query() || !$query_has_type) {
+    return $query;
+  }
+
+  $post_types        = Utilities::$custom_post_types;
+  $queried_type      = $query->query_vars["post_type"];
+  $is_target_archive = is_archive() && isset($queried_type) && in_array($queried_type, $post_types);
+  $has_query_string  = isset($_GET['t']) && in_array($_GET['t'], Utilities::$availability_types);
+
+  if ($is_target_archive && $has_query_string) {
+
+    $t = $_GET['t'];
+    $timestamp = Utilities::get_timestamp();
+
+    $filter = array();
+
+    if ($t == 'past') {
+      array_push($filter, array(
+        'key' => 'wpcf-end-time', 
+        'value' => $timestamp, 
+        'compare' => '<',
+      ));
+
+    } else if ($t == 'present') {
+
+      array_push($filter, array(
+        'key' => 'wpcf-start-time', 
+        'value' => $timestamp, 
+        'compare' => '<=',
+      ));
+
+      array_push($filter, array(
+        'key' => 'wpcf-end-time', 
+        'value' => $timestamp, 
+        'compare' => '>=',
+      ));
+
+    } else if ($t == 'upcoming') {
+
+      array_push($filter, array(
+        'key' => 'wpcf-start-time', 
+        'value' => $timestamp, 
+        'compare' => '>',
+      ));
+    }
+
+    $query->set('meta_query', $filter);
+  }
+
+  return $query;
 }

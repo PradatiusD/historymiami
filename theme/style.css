@@ -1283,7 +1283,7 @@ mark,
 .text-capitalize {
   text-transform: capitalize; }
 
-.text-muted {
+.text-muted, article.entry .entry-meta {
   color: #777777; }
 
 .text-primary {
@@ -5856,7 +5856,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .navbar-brand {
   margin-left: 0 !important;
   width: 300px;
-  background: url("images/logo.png");
+  background: url("images/historymiami-logo.png");
   background-size: 300px;
   background-repeat: no-repeat;
   background-position: center center; }
@@ -5918,7 +5918,30 @@ body.home .site-inner {
   padding: 0;
   overflow-x: hidden; }
 
-/* Slider */
+/* Content */
+article.entry {
+  margin-bottom: 1em; }
+  article.entry .entry-meta {
+    font-size: 1.2em; }
+  article.entry .entry-title {
+    padding: 100px 2em 1em 0.5em;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover; }
+    article.entry .entry-title a {
+      color: white;
+      background: rgba(164, 59, 10, 0.75);
+      display: block;
+      padding: 0.5em; }
+    article.entry .entry-title .title {
+      display: block;
+      font-size: 1.3em; }
+    article.entry .entry-title .subtitle {
+      display: block;
+      font-family: "Proxima Nova W08 Reg";
+      font-size: 0.9em; }
+
+/* Swiper Slider */
 .swiper-container {
   width: 100%;
   height: 640px; }
@@ -5941,8 +5964,8 @@ body.home .site-inner {
     position: absolute;
     bottom: 25%;
     left: 15px;
-    background: rgba(0, 0, 0, 0.78);
-    padding: 2em 1.5em 1.5em 1.5em; }
+    background: rgba(164, 59, 10, 0.75);
+    padding: 2em 2em 1.5em 1.5em; }
     @media only screen and (max-width: 1140px) {
       .swiper-slide .swiper-overlay {
         margin-right: 0; } }
