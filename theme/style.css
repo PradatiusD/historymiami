@@ -1283,7 +1283,7 @@ mark,
 .text-capitalize {
   text-transform: capitalize; }
 
-.text-muted, article.entry .entry-meta {
+.text-muted, .archive article.entry .entry-meta {
   color: #777777; }
 
 .text-primary {
@@ -5919,24 +5919,24 @@ body.home .site-inner {
   overflow-x: hidden; }
 
 /* Content */
-article.entry {
+.archive article.entry {
   margin-bottom: 1em; }
-  article.entry .entry-meta {
+  .archive article.entry .entry-meta {
     font-size: 1.2em; }
-  article.entry .entry-title {
+  .archive article.entry .entry-title {
     padding: 100px 2em 1em 0.5em;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover; }
-    article.entry .entry-title a {
+    .archive article.entry .entry-title a {
       color: white;
       background: rgba(164, 59, 10, 0.75);
       display: block;
       padding: 0.5em; }
-    article.entry .entry-title .title {
+    .archive article.entry .entry-title .title {
       display: block;
       font-size: 1.3em; }
-    article.entry .entry-title .subtitle {
+    .archive article.entry .entry-title .subtitle {
       display: block;
       font-family: "Proxima Nova W08 Reg";
       font-size: 0.9em; }
