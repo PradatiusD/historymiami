@@ -1,0 +1,15 @@
+{
+    "name": "dprada/historymiami",
+    "authors": [
+        {
+            "name": "PradatiusD",
+            "email": "danielprada2012@gmail.com"
+        }
+    ],
+    "require": {
+      "madcoda/php-youtube-api": "1.*"
+    },
+    "config": {
+        "vendor-dir": "theme/lib"
+    }
+}

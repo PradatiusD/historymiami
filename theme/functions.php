@@ -43,8 +43,13 @@ include_once("utilities.php");
 Utilities::local_livereload();
 
 // Header Stylesheets
-wp_enqueue_style( 'google-font', '//fast.fonts.net/cssapi/12c72165-1a50-4e78-97ed-8e1ee71db526.css',      array(), '1.0.0');
+wp_enqueue_style( 'fonts.com',   '//fast.fonts.net/cssapi/12c72165-1a50-4e78-97ed-8e1ee71db526.css',      array(), '1.1.1');
 wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0');
+
+// Footer Javascript for Search
+wp_enqueue_script('bootstrap3-typeahead', get_stylesheet_directory_uri(). "/bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js", array('jquery'), '1.0.0', true);
+wp_enqueue_script('bootstrap-modal', get_stylesheet_directory_uri(). "/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js", array('jquery'), '1.0.0', true);
+wp_enqueue_script('search-bar', get_stylesheet_directory_uri(). "/js/search.js", array('jquery','bootstrap-modal','bootstrap3-typeahead'), '1.0.0', true);
 
 
 function meta_imagery () {
@@ -56,6 +61,28 @@ function meta_imagery () {
 
 add_action('wp_head','meta_imagery');
 
+add_action('wp_footer','bootstrap_modal');
+function bootstrap_modal () {
+ ?>
+
+<!-- Search Input Modal -->
+<div class="modal fade" id="search-model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search The HistoryMiami Website</h4>
+      </div>
+      <div class="modal-body">
+        <input id="search-input" type="text" class="form-control input-lg" autocomplete="off">
+      </div>
+    </div>
+  </div>
+</div>
+
+ <?php
+}
+
 
 add_filter( 'genesis_nav_items', 'be_follow_icons', 10, 2 );
 add_filter( 'wp_nav_menu_items', 'be_follow_icons', 10, 2 );
@@ -66,6 +93,7 @@ function be_follow_icons($menu, $args) {
   }
 
   $providers = array(
+    array("icon" => "search",      "url"  => "#", "id" => "global_search"),
     array("icon" => "facebook",    "url"  => "http://www.facebook.com/historymiami360"),     
     array("icon" => "twitter",     "url"  => "http://www.twitter.com/historymiami"),  
     array("icon" => "instagram",   "url"  => "https://www.instagram.com/historymiami/")
@@ -74,7 +102,10 @@ function be_follow_icons($menu, $args) {
   $social = '';
 
   foreach ($providers as $provider) {
-    $social .= '<li class="menu-item menu-item-type-custom menu-item-social menu-item-object-custom"><a><i class="fa fa-'.$provider["icon"].'"></i></a></li>';
+    $id = isset($provider["id"]) ? "id=".$provider["id"]:"";
+    $social .= '<li class="menu-item menu-item-type-custom menu-item-social menu-item-object-custom">';
+    $social .=   '<a href="'. $provider["url"].'" target="_blank"'.$id.'>';
+    $social .=     '<i class="fa fa-'.$provider["icon"].'"></i></a></li>';
   }
 
   return $menu . $social;

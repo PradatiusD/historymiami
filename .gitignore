@@ -4,5 +4,5 @@ node_modules
 .sass-cache
 
 **/*.map
-theme/bower_components/
-theme/events.csv
+theme/bower_components
+theme/lib
