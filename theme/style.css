@@ -1283,7 +1283,7 @@ mark,
 .text-capitalize {
   text-transform: capitalize; }
 
-.text-muted, .archive article.entry .entry-meta {
+.text-muted, .archive.post-type-archive-exhibition article.entry .entry-meta, .archive.post-type-archive-event article.entry .entry-meta, .archive.post-type-city-tour article.entry .entry-meta {
   color: #777777; }
 
 .text-primary {
@@ -5836,6 +5836,9 @@ html {
 a:hover {
   color: #DE5E2D; }
 
+hr {
+  border-top-color: gainsboro; }
+
 body {
   -webkit-font-smoothing: antialiased;
   padding-top: 66px; }
@@ -5920,26 +5923,26 @@ body.home .site-inner {
   overflow-x: hidden; }
 
 /* Content */
-.archive article.entry {
+.archive.post-type-archive-exhibition article.entry, .archive.post-type-archive-event article.entry, .archive.post-type-city-tour article.entry {
   margin-bottom: 1em; }
-  .archive article.entry .entry-meta {
+  .archive.post-type-archive-exhibition article.entry .entry-meta, .archive.post-type-archive-event article.entry .entry-meta, .archive.post-type-city-tour article.entry .entry-meta {
     font-size: 1.2em; }
-  .archive article.entry .entry-title {
+  .archive.post-type-archive-exhibition article.entry .entry-title, .archive.post-type-archive-event article.entry .entry-title, .archive.post-type-city-tour article.entry .entry-title {
     padding: 100px 2em 1em 0.5em;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover; }
-    .archive article.entry .entry-title a, .archive article.entry .entry-title .title, .archive article.entry .entry-title .subtitle {
+    .archive.post-type-archive-exhibition article.entry .entry-title a, .archive.post-type-archive-exhibition article.entry .entry-title .title, .archive.post-type-archive-exhibition article.entry .entry-title .subtitle, .archive.post-type-archive-event article.entry .entry-title a, .archive.post-type-archive-event article.entry .entry-title .title, .archive.post-type-archive-event article.entry .entry-title .subtitle, .archive.post-type-city-tour article.entry .entry-title a, .archive.post-type-city-tour article.entry .entry-title .title, .archive.post-type-city-tour article.entry .entry-title .subtitle {
       text-shadow: 1px 1px 0.5em black; }
-    .archive article.entry .entry-title a {
+    .archive.post-type-archive-exhibition article.entry .entry-title a, .archive.post-type-archive-event article.entry .entry-title a, .archive.post-type-city-tour article.entry .entry-title a {
       color: white;
       display: block;
       padding: 0.5em; }
-    .archive article.entry .entry-title .title {
+    .archive.post-type-archive-exhibition article.entry .entry-title .title, .archive.post-type-archive-event article.entry .entry-title .title, .archive.post-type-city-tour article.entry .entry-title .title {
       display: block;
       text-transform: uppercase;
       font-size: 1.3em; }
-    .archive article.entry .entry-title .subtitle {
+    .archive.post-type-archive-exhibition article.entry .entry-title .subtitle, .archive.post-type-archive-event article.entry .entry-title .subtitle, .archive.post-type-city-tour article.entry .entry-title .subtitle {
       display: block;
       font-family: "Frutiger LT W01_55 Roma1475738";
       font-size: 0.9em; }

@@ -177,7 +177,7 @@ function genesis_do_post_title_with_image () {
 
     $split_title = '';
 
-    $split_title .= '<a href="'.get_the_permalink().' rel="bookmark"><span class="title">'.$title["title"].'</span>';
+    $split_title .= '<a href="'.get_the_permalink().'" rel="bookmark"><span class="title">'.$title["title"].'</span>';
     if (isset($title["subtitle"])) {
       $split_title .= '<span class="subtitle">'.$title["subtitle"].'</span></a>';
     }
@@ -244,4 +244,16 @@ function available_post_type ($query) {
   }
 
   return $query;
+}
+
+
+
+add_action( 'pre_get_posts', 'include_all_staff_members' );
+function include_all_staff_members( $query ) {
+
+  if ($query->is_main_query() && is_post_type_archive('staff')) {
+    $query->set('posts_per_page', -1);
+    $query->set('orderby','title');
+    $query->set('order','ASC');
+  }
 }
