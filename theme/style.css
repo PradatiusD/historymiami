@@ -6082,4 +6082,13 @@ body.home .site-inner {
   overflow-y: hidden;
   color: white; }
 
+.share-before.share-filled.share-medium .share {
+  background-color: black;
+  font-family: "Frutiger LT W01_55 Roma1475738", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+.share-before.share-filled.share-medium .count {
+  border-color: black;
+  color: black; }
+.share-before.share-filled.share-medium:hover .count {
+  background-color: #c8c8c8 !important; }
+
 /*# sourceMappingURL=style.css.map */
