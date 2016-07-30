@@ -52,6 +52,11 @@ wp_enqueue_script('bootstrap-modal', get_stylesheet_directory_uri(). "/bower_com
 wp_enqueue_script('search-bar', get_stylesheet_directory_uri(). "/js/search.js", array('jquery','bootstrap-modal','bootstrap3-typeahead'), '1.0.0', true);
 
 
+if (gethostname() == "Daniels-MacBook-Pro.local") {
+  wp_enqueue_script('local-utils', get_stylesheet_directory_uri(). "/js/utils.js", array('jquery'), '1.0.0', true);
+}
+
+
 function meta_imagery () {
   ?>
     <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri();?>/images/apple-touch-icon.png" />
