@@ -134,6 +134,6 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy', ['ftp-deploy:incremental']);
 
   grunt.registerTask('deployPlugin', ['ftp-deploy:plugin']);
-  grunt.registerTask('deployAll', ['ftp-deploy:all']);
+  grunt.registerTask('deployAll', ['ftp-deploy:all', 'ftp-deploy:plugin']);
   grunt.registerTask('copyAll',   ['copy:themeAll']);
 };
