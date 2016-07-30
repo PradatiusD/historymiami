@@ -1,6 +1,6 @@
 {
-  "name": "historymiami",
-  "description": "OLD IP: 69.20.113.165",
+  "name": "HistoryMiami Museum",
+  "description": "The WordPress website for the HistoryMiami Museum",
   "main": "index.js",
   "authors": [
     "https://github.com/PradatiusD"

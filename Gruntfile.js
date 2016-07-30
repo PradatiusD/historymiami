@@ -19,6 +19,13 @@ module.exports = function(grunt) {
         livereload: true,
       }
     },
+    plugin: {
+      files: ['plugin/**'],
+      tasks: ['copy:plugin'],
+      options: {
+        livereload: true,
+      }
+    },
     sass: {
       files: [sassFile],
       tasks: ['sass']

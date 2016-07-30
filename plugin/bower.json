@@ -1,0 +1,22 @@
+{
+  "name": "HistoryMiami Plugin",
+  "homepage": "https://github.com/PradatiusD/historymiami",
+  "authors": [
+    "PradatiusD <danielprada2012@gmail.com>"
+  ],
+  "description": "WP PLugins for HistoryMiami",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "theme/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "instafeed.js": "^1.4.1"
+  }
+}

@@ -90,7 +90,7 @@ class Affiliate_Widget extends WP_Widget {
 
   function __construct() {
     parent::__construct(
-      'Affiliate_Widget', 'Museum Affiliate', array( 'description' => 'HistoryMiami Museum Affiliate Widgets')
+      'Affiliate_Widget', 'Museum Affiliate', array( 'description' => 'HistoryMiami Museum Affiliate Widget')
     );
   }
   
@@ -101,7 +101,30 @@ class Affiliate_Widget extends WP_Widget {
     <?php
     echo ob_get_clean();
   }
-} 
+}
+
+class Instagram_Widget extends WP_Widget {
+  function __construct() {
+    parent::__construct(
+      'Instagram_Widget', 'Instagram Feed', array('description' => 'Instagram Feed for HistoryMiami')
+    );
+  }
+  
+  function widget( $args, $instance ) {
+    $base = plugin_dir_url( __FILE__ );
+    wp_enqueue_script('instafeed', $base."bower_components/instafeed.js/instafeed.min.js", array('jquery'), '1.0.0', true);
+    wp_enqueue_script('instafeed-client', $base."js/instagram-client.js", array('instafeed'), '1.0.0', true);
+    ob_start();
+  ?>
+    <h4 class="widget-title">
+      From <a href="https://www.instagram.com/historymiami/" target="_blank">@HistoryMiami</a> on <i class="fa fa-instagram"></i>
+    </h4>
+    <div id="instafeed"></div>
+    
+    <?php
+    echo ob_get_clean();
+  } 
+}
 
 
 function add_history_miami_widgets () {
@@ -109,6 +132,7 @@ function add_history_miami_widgets () {
   register_widget('Contact_Widget');
   register_widget('Social_Widget');
   register_widget('Affiliate_Widget');
+  register_widget('Instagram_Widget');
 }
 
 

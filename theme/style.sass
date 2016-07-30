@@ -313,3 +313,24 @@ body.home .site-inner
   margin-right: 1em
   display: inline-block
   background-size: cover
+
+#instafeed
+  figure
+    position: relative
+    margin-top: 5px
+    margin-bottom: 5px
+    &:hover 
+      p
+        opacity: 1
+  p
+    opacity: 0
+    +transition(all 0.3s ease-out)
+    position: absolute
+    z-index: 300
+    width: 100%
+    height: 100%
+    padding: 1em
+    top: 0
+    left: 0
+    background: rgba(0, 0, 0, 0.65)
+    color: white
