@@ -8,7 +8,7 @@ class Navigation {
       <nav class="navbar navbar-default navbar-fixed-top genesis-nav-menu">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" id="mobile-menu">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -33,6 +33,8 @@ class Navigation {
 }
 
 add_filter('genesis_do_nav', array('Navigation','insert_bootstrap_classes'), 10, 3);
-wp_enqueue_script( 'bootstrap-nav', get_stylesheet_directory_uri().'/global.min.js', array('jquery'), '1.0.0', true );
+
+wp_enqueue_script('sidr', get_stylesheet_directory_uri(). "/bower_components/sidr/dist/jquery.sidr.min.js", array('jquery'), '1.0.0', true);
+wp_enqueue_script('sidr-client', get_stylesheet_directory_uri(). "/js/sidr-client.js", array('sidr'), '1.0.0', true);
 
 ?>

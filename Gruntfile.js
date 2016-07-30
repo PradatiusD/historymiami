@@ -79,8 +79,7 @@ module.exports = function(grunt) {
     global: {
       files: {
         'theme/global.min.js': [
-          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js',
-          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
+          'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
           'theme/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js'
         ]
       }

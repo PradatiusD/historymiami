@@ -68,7 +68,6 @@ body
         margin-top: 46px
 
 
-
 ul.nav li.dropdown:hover > ul.dropdown-menu
   display: block
 
@@ -153,6 +152,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
 
   .widget-area
     @extend .col-sm-3
+    @extend .col-xs-6
 
   .fa
     margin-right: 8px
@@ -179,7 +179,7 @@ body.home .site-inner
 .archive
   &.post-type-archive-exhibition,
   &.post-type-archive-event,
-  &.post-type-city-tour,
+  &.post-type-archive-city-tour,
     article.entry
       margin-bottom: 1em
 
@@ -346,3 +346,47 @@ body.home .site-inner
   &:hover
     .count
       background-color: #c8c8c8 !important
+
+
+.sidr 
+  display: block
+  position: fixed
+  top: $navbar-height
+  height: 100%
+  z-index: 1
+  width: 260px
+  overflow-x: hidden
+  overflow-y: auto
+
+  > ul, .submenu
+    list-style-type: none
+    padding-left: 0
+
+  > ul
+    border-right: 1px solid #e7e7e7
+
+    a
+      display: block
+      width: 100%
+      padding: 0.75em 1em
+      border-bottom: 1px solid #e7e7e7
+      position: relative
+    
+    .fa
+      position: absolute
+      right: 1em
+
+  .submenu
+    a
+      text-indent: 0.75em
+      
+  &.right
+    left: auto
+    right: -260px
+
+  &.left
+    left: -260px
+    right: auto
+
+#wpadminbar
+  position: fixed

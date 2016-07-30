@@ -46,9 +46,11 @@ Utilities::local_livereload();
 wp_enqueue_style( 'fonts.com',   '//fast.fonts.net/cssapi/12c72165-1a50-4e78-97ed-8e1ee71db526.css',      array(), '1.1.1');
 wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0');
 
-// Footer Javascript for Search
-wp_enqueue_script('bootstrap3-typeahead', get_stylesheet_directory_uri(). "/bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js", array('jquery'), '1.0.0', true);
-wp_enqueue_script('bootstrap-modal', get_stylesheet_directory_uri(). "/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js", array('jquery'), '1.0.0', true);
+// Footer Javascripts
+$bower_base = get_stylesheet_directory_uri(). "/bower_components";
+
+wp_enqueue_script('bootstrap3-typeahead', $bower_base. "/bootstrap3-typeahead/bootstrap3-typeahead.min.js", array('jquery'), '1.0.0', true);
+wp_enqueue_script('bootstrap-modal', $bower_base. "/bootstrap-sass/assets/javascripts/bootstrap/modal.js", array('jquery'), '1.0.0', true);
 wp_enqueue_script('search-bar', get_stylesheet_directory_uri(). "/js/search.js", array('jquery','bootstrap-modal','bootstrap3-typeahead'), '1.0.0', true);
 
 
