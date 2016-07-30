@@ -3,10 +3,12 @@
 
 // var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-var htmlHeight   = $(document).height();
-var navbarHeight = $('.navbar-fixed-top').height();
+var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+var navbarHeight   = $('.navbar-fixed-top').height();
 
-$('.swiper-container').height(htmlHeight - navbarHeight);
+var sliderHeight = viewPortHeight - navbarHeight;
+
+$('.swiper-container').height(sliderHeight);
 
 var options = {
   loop: true,

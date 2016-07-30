@@ -78,11 +78,13 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
 
 .navbar-brand
   margin-left: 0 !important
-  width: 300px
   background: url('images/historymiami-logo.png')
-  background-size: 300px
   background-repeat: no-repeat
   background-position: center center  
+  background-size: 100%
+  width: 300px
+  +max-screen(394px)
+    width: 233px
 
 .site-header
   display: none
@@ -151,8 +153,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
     @extend .container
 
   .widget-area
-    @extend .col-sm-3
-    @extend .col-xs-6
+    @extend .col-md-3
 
   .fa
     margin-right: 8px
@@ -347,9 +348,8 @@ body.home .site-inner
     .count
       background-color: #c8c8c8 !important
 
-
 .sidr 
-  display: block
+  display: none
   position: fixed
   top: $navbar-height
   height: 100%
@@ -357,6 +357,7 @@ body.home .site-inner
   width: 260px
   overflow-x: hidden
   overflow-y: auto
+  background: white
 
   > ul, .submenu
     list-style-type: none

@@ -8,13 +8,13 @@ class Navigation {
       <nav class="navbar navbar-default navbar-fixed-top genesis-nav-menu">
         <div class="container-fluid">
           <div class="navbar-header">
+            <a class="navbar-brand" href="<?php echo get_home_url(); ?>" title="<?php echo get_bloginfo('name');?>"></a>
             <button type="button" class="navbar-toggle collapsed" id="mobile-menu">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo get_home_url(); ?>" title="<?php echo get_bloginfo('name');?>"></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <?php 

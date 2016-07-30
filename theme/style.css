@@ -1564,13 +1564,13 @@ pre {
   .row:after, .content-sidebar-wrap:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .footer-widgets .widget-area, .col-md-3, .content-sidebar-wrap .sidebar, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .footer-widgets .widget-area, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .content-sidebar-wrap .content, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, body.full-width-content .content-sidebar-wrap .content, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .content-sidebar-wrap .sidebar, .footer-widgets .widget-area, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .content-sidebar-wrap .content, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, body.full-width-content .content-sidebar-wrap .content, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .footer-widgets .widget-area, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left; }
 
 .col-xs-1 {
@@ -1588,7 +1588,7 @@ pre {
 .col-xs-5 {
   width: 41.66667%; }
 
-.col-xs-6, .footer-widgets .widget-area {
+.col-xs-6 {
   width: 50%; }
 
 .col-xs-7 {
@@ -1727,7 +1727,7 @@ pre {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .footer-widgets .widget-area, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -1736,7 +1736,7 @@ pre {
   .col-sm-2 {
     width: 16.66667%; }
 
-  .col-sm-3, .footer-widgets .widget-area {
+  .col-sm-3 {
     width: 25%; }
 
   .col-sm-4 {
@@ -1883,7 +1883,7 @@ pre {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .content-sidebar-wrap .sidebar, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .content-sidebar-wrap .content, .col-md-10, .col-md-11, .col-md-12, body.full-width-content .content-sidebar-wrap .content {
+  .col-md-1, .col-md-2, .col-md-3, .content-sidebar-wrap .sidebar, .footer-widgets .widget-area, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .content-sidebar-wrap .content, .col-md-10, .col-md-11, .col-md-12, body.full-width-content .content-sidebar-wrap .content {
     float: left; }
 
   .col-md-1 {
@@ -1892,7 +1892,7 @@ pre {
   .col-md-2 {
     width: 16.66667%; }
 
-  .col-md-3, .content-sidebar-wrap .sidebar {
+  .col-md-3, .content-sidebar-wrap .sidebar, .footer-widgets .widget-area {
     width: 25%; }
 
   .col-md-4 {
@@ -5858,11 +5858,14 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .navbar-brand {
   margin-left: 0 !important;
-  width: 300px;
   background: url("images/historymiami-logo.png");
-  background-size: 300px;
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  background-size: 100%;
+  width: 300px; }
+  @media only screen and (max-width: 394px) {
+    .navbar-brand {
+      width: 233px; } }
 
 .site-header {
   display: none; }
@@ -5951,6 +5954,9 @@ body.home .site-inner {
 .swiper-container {
   width: 100%;
   height: 640px; }
+  @media only screen and (max-height: 580px) {
+    .swiper-container {
+      height: 50px; } }
 
 .swiper-slide {
   background-repeat: no-repeat;
@@ -6092,14 +6098,15 @@ body.home .site-inner {
   background-color: #c8c8c8 !important; }
 
 .sidr {
-  display: block;
+  display: none;
   position: fixed;
   top: 66px;
   height: 100%;
   z-index: 1;
   width: 260px;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  background: white; }
   .sidr > ul, .sidr .submenu {
     list-style-type: none;
     padding-left: 0; }

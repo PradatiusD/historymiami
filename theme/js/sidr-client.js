@@ -19,7 +19,7 @@ $("#menu-primary-menu > li").each(function () {
 
   var $li = $(this).clone();
 
-  var classes = $li.attr('class')
+  var classes = $li.attr('class');
 
   if (classes.indexOf('dropdown') > -1) {
     setSidrDropdownClickBehavior($li);
@@ -44,6 +44,17 @@ $("#menu-primary-menu > li").each(function () {
 $('body').append($sidr);
 
 $(document).ready(function () {
-  $('#mobile-menu').sidr();  
+
+  var $menuToggle = $('#mobile-menu');
+  var $sidr = $('#sidr');
+
+  $sidr.css('display','block');
+  var width = $('body').width();
+
+  $menuToggle.sidr({
+    onOpen: function () {
+      $('.genesis-nav-menu').width(width);
+    }
+  });
 })
 })(jQuery);
