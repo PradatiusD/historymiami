@@ -45,10 +45,8 @@ $('body').append($sidr);
 
 $(document).ready(function () {
 
-  var $menuToggle = $('#mobile-menu');
   var $sidr = $('#sidr');
-
-  $sidr.css('display','block');
+  var $menuToggle = $('#mobile-menu');
   var width = $('body').width();
 
   $menuToggle.sidr({
