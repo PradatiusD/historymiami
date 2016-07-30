@@ -92,8 +92,8 @@ module.exports = function(grunt) {
     incremental: {
       auth: {
         host:     process.env.FTP_HOST,
-        username: process.env.FTP_USERNAME,
-        password: process.env.FTP_PASSWORD,
+        username: process.env.FTP_THEME_USERNAME,
+        password: process.env.FTP_THEME_PASSWORD,
         port: 21
       },
       src: 'theme',
@@ -104,11 +104,22 @@ module.exports = function(grunt) {
     all: {
       auth: {
         host:     process.env.FTP_HOST,
-        username: process.env.FTP_USERNAME,
-        password: process.env.FTP_PASSWORD,
+        username: process.env.FTP_THEME_USERNAME,
+        password: process.env.FTP_THEME_PASSWORD,
         port: 21
       },
       src: 'theme',
+      dest: package.name,
+      forceVerbose: true
+    },
+    plugin: {
+      auth: {
+        host:     process.env.FTP_HOST,
+        username: process.env.FTP_PLUGIN_USERNAME,
+        password: process.env.FTP_PLUGIN_PASSWORD,
+        port: 21
+      },
+      src: 'plugin',
       dest: package.name,
       forceVerbose: true
     }
@@ -123,6 +134,7 @@ module.exports = function(grunt) {
   grunt.registerTask('ftp',    ['ftp-deploy:incremental']);
   grunt.registerTask('deploy', ['ftp-deploy:incremental']);
 
+  grunt.registerTask('deployPlugin', ['ftp-deploy:plugin']);
   grunt.registerTask('deployAll', ['ftp-deploy:all']);
   grunt.registerTask('copyAll',   ['copy:themeAll']);
 };
