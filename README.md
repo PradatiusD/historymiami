@@ -1,6 +1,8 @@
 # HistoryMiami
 
-OLD IP: 69.20.113.165
+Note:
+- Old IP: 69.20.113.165
+- New IP: 107.180.58.74
 
 ```
 bash sudo apachectl restart
