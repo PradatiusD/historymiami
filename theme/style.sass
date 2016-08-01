@@ -176,7 +176,7 @@ body.home .site-inner
   padding: 0
   overflow-x: hidden
 
-/* Content */
+/* Post Type Archives */
 .archive
   &.post-type-archive-exhibition,
   &.post-type-archive-event,
@@ -212,6 +212,10 @@ body.home .site-inner
           font-family: $body-font
           font-size: 0.9em
 
+.post-type-archive-staff
+  +min-screen(640px)
+    .table
+      table-layout: fixed
 
 /* Swiper Slider */
 .swiper-container
@@ -390,3 +394,13 @@ body.home .site-inner
 
 #wpadminbar
   position: fixed
+
+.dropdown-menu
+
+  .dropdown-menu
+    top: 0
+    left: 100%
+    margin-top: -6px
+    margin-left: -1px
+    border-radius: 0
+    z-index: 400

@@ -86,42 +86,48 @@ module.exports = function(grunt) {
     }
   };
 
+  function ftpConfig (params) {
 
-  options['ftp-deploy'] = {
-    incremental: {
+    var env = process.env;
+
+    var location  = params.location.toUpperCase();
+    var component = params.component;
+
+    var options = {
       auth: {
-        host:     process.env.FTP_HOST,
-        username: process.env.FTP_THEME_USERNAME,
-        password: process.env.FTP_THEME_PASSWORD,
+        host:     env["FTP_"+location+"_HOST"],
+        username: env["FTP_"+location+"_"+component.toUpperCase()+"_USERNAME"],
+        password: env["FTP_"+location+"_"+component.toUpperCase()+"_PASSWORD"],
         port: 21
       },
-      src: 'theme',
+      src: component.toLowerCase(),
       dest: package.name,
       forceVerbose: true,
+      exclusions: params.exclusions || []
+    };
+
+    return options;
+  }
+
+  options['ftp-deploy'] = {
+    "staging.theme": ftpConfig({
+      location: "dev", 
+      component: "theme",
       exclusions: ['theme/bower_components', 'theme/images','theme/lib']
-    },
-    all: {
-      auth: {
-        host:     process.env.FTP_HOST,
-        username: process.env.FTP_THEME_USERNAME,
-        password: process.env.FTP_THEME_PASSWORD,
-        port: 21
-      },
-      src: 'theme',
-      dest: package.name,
-      forceVerbose: true
-    },
-    plugin: {
-      auth: {
-        host:     process.env.FTP_HOST,
-        username: process.env.FTP_PLUGIN_USERNAME,
-        password: process.env.FTP_PLUGIN_PASSWORD,
-        port: 21
-      },
-      src: 'plugin',
-      dest: package.name,
-      forceVerbose: true
-    }
+    }),
+    "staging.plugin": ftpConfig({
+      location:"dev",
+      component: "plugin"
+    }),
+    "production.theme": ftpConfig({
+      location: "prod", 
+      component: "theme",
+      exclusions: ['theme/bower_components', 'theme/images','theme/lib']
+    }),
+    "production.plugin": ftpConfig({
+      location: "prod", 
+      component: "plugin"
+    })
   };
 
   grunt.initConfig(options);
@@ -129,11 +135,4 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('default', ['watch']);
-
-  grunt.registerTask('ftp',    ['ftp-deploy:incremental']);
-  grunt.registerTask('deploy', ['ftp-deploy:incremental']);
-
-  grunt.registerTask('deployPlugin', ['ftp-deploy:plugin']);
-  grunt.registerTask('deployAll', ['ftp-deploy:all', 'ftp-deploy:plugin']);
-  grunt.registerTask('copyAll',   ['copy:themeAll']);
 };

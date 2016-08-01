@@ -5925,7 +5925,7 @@ body.home .site-inner {
   padding: 0;
   overflow-x: hidden; }
 
-/* Content */
+/* Post Type Archives */
 .archive.post-type-archive-exhibition article.entry, .archive.post-type-archive-event article.entry, .archive.post-type-archive-city-tour article.entry {
   margin-bottom: 1em; }
   .archive.post-type-archive-exhibition article.entry .entry-meta, .archive.post-type-archive-event article.entry .entry-meta, .archive.post-type-archive-city-tour article.entry .entry-meta {
@@ -5949,6 +5949,10 @@ body.home .site-inner {
       display: block;
       font-family: "Frutiger LT W01_55 Roma1475738";
       font-size: 0.9em; }
+
+@media only screen and (min-width: 640px) {
+  .post-type-archive-staff .table {
+    table-layout: fixed; } }
 
 /* Swiper Slider */
 .swiper-container {
@@ -6128,5 +6132,13 @@ body.home .site-inner {
 
 #wpadminbar {
   position: fixed; }
+
+.dropdown-menu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0;
+  z-index: 400; }
 
 /*# sourceMappingURL=style.css.map */
