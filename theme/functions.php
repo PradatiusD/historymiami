@@ -210,38 +210,49 @@ function available_post_type ($query) {
   $is_target_archive = is_archive() && isset($queried_type) && in_array($queried_type, $post_types);
   $has_query_string  = isset($_GET['t']) && in_array($_GET['t'], Utilities::$availability_types);
 
-  if ($is_target_archive && $has_query_string) {
+  if ($is_target_archive) {
 
-    $t = $_GET['t'];
     $timestamp = Utilities::get_timestamp();
-
     $filter = array();
 
-    if ($t == 'past') {
+    if ($has_query_string) {
+
+      $t = $_GET['t'];
+
+      if ($t == 'past') {
+        array_push($filter, array(
+          'key' => 'wpcf-end-time', 
+          'value' => $timestamp, 
+          'compare' => '<',
+        ));
+
+      } else if ($t == 'current') {
+
+        array_push($filter, array(
+          'key' => 'wpcf-start-time', 
+          'value' => $timestamp, 
+          'compare' => '<=',
+        ));
+
+        array_push($filter, array(
+          'key' => 'wpcf-end-time', 
+          'value' => $timestamp, 
+          'compare' => '>=',
+        ));
+
+      } else if ($t == 'upcoming') {
+
+        array_push($filter, array(
+          'key' => 'wpcf-start-time', 
+          'value' => $timestamp, 
+          'compare' => '>',
+        ));
+      } 
+
+    } else {
+
       array_push($filter, array(
         'key' => 'wpcf-end-time', 
-        'value' => $timestamp, 
-        'compare' => '<',
-      ));
-
-    } else if ($t == 'present') {
-
-      array_push($filter, array(
-        'key' => 'wpcf-start-time', 
-        'value' => $timestamp, 
-        'compare' => '<=',
-      ));
-
-      array_push($filter, array(
-        'key' => 'wpcf-end-time', 
-        'value' => $timestamp, 
-        'compare' => '>=',
-      ));
-
-    } else if ($t == 'upcoming') {
-
-      array_push($filter, array(
-        'key' => 'wpcf-start-time', 
         'value' => $timestamp, 
         'compare' => '>',
       ));
@@ -253,6 +264,18 @@ function available_post_type ($query) {
   return $query;
 }
 
+
+add_action('genesis_before_loop', 'post_type_archive_descriptions');
+function post_type_archive_descriptions () {
+  ob_start();?>
+
+  <header class="archive-description">
+    <?php the_archive_description();?>
+  </header>
+
+  <?php
+  echo ob_get_clean();
+}
 
 
 add_action( 'pre_get_posts', 'include_all_staff_members' );
