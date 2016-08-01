@@ -15,6 +15,8 @@ var options = {
   })
 };
 
+console.log(options.events.length)
+
 
 $('#calendar').fullCalendar(options);
 

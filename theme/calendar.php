@@ -1,13 +1,12 @@
-<?php /* Template Name: Calendar */ ?>
-
-
-<?php
+<?php 
+/* Template Name: Calendar */ 
 
 add_action('genesis_after_entry', 'output_post_data_json');
 function output_post_data_json () {
 
 $args = array(
-  "post_type" => array('city-tour','event')
+  "post_type" => array('city-tour','event'),
+  "nopaging"  => true
 );
 
 $post_query = new WP_Query($args);

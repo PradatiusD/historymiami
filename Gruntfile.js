@@ -113,7 +113,7 @@ module.exports = function(grunt) {
     "staging.theme": ftpConfig({
       location: "dev", 
       component: "theme",
-      exclusions: ['theme/bower_components', 'theme/images','theme/lib']
+      exclusions: ['theme/bower_components', 'theme/images','theme/lib','theme/screenshot.png']
     }),
     "staging.plugin": ftpConfig({
       location:"dev",

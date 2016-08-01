@@ -11,14 +11,9 @@ function homepage_slider() {
     'order'     => 'ASC',
     "meta_query" => array(
         array(
-          "key" => "wpcf-start-time",
-          "value" => $timestamp,
-          "compare" => "<="
-        ),
-        array(
           "key" => "wpcf-end-time",
           "value" => $timestamp,
-          "compare" => ">="
+          "compare" => ">"
         )
       )
   );
@@ -41,7 +36,7 @@ function homepage_slider() {
 
     ?>
 
-        <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url(); ?>');">
+        <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
           <div class="container">
             <div class="swiper-overlay">
               <h3>

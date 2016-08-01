@@ -9,8 +9,9 @@ class Utilities {
 
     if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) {
       // For Debugging on Localhost
-      error_reporting(E_ALL);
       ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
       
       // For live reloading
       function local_livereload() {

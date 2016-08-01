@@ -75,6 +75,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu
 .navbar-nav > li > a
   padding-right: 11px
   padding-left: 11px
+  text-transform: uppercase
 
 .navbar-brand
   margin-left: 0 !important
@@ -341,16 +342,24 @@ body.home .site-inner
     overflow-y: hidden
     color: white
 
+/* Share Icons */
+
 .share-before.share-filled.share-medium
+
   .share
-    background-color: $brand-primary
+    background-color: $orange
     font-family: $font-family-sans-serif
+    border-top-right-radius: 3px
+    border-bottom-right-radius: 3px
+
   .count
-    border-color: $brand-primary
-    color: $brand-primary
+    border-color: $orange
+    color: $orange
+    display: none
+
   &:hover
     .count
-      background-color: #c8c8c8 !important
+      background-color: lighten($orange, 42%) !important
 
 .sidr 
   position: fixed
@@ -404,3 +413,11 @@ body.home .site-inner
     margin-left: -1px
     border-radius: 0
     z-index: 400
+
+  .wider-dropdown & 
+    min-width: 316px
+
+  .left-dropdown &
+    left: auto
+    right: 100%
+    margin-right: -1px

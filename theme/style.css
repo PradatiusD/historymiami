@@ -5854,7 +5854,8 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 /* Navbar */
 .navbar-nav > li > a {
   padding-right: 11px;
-  padding-left: 11px; }
+  padding-left: 11px;
+  text-transform: uppercase; }
 
 .navbar-brand {
   margin-left: 0 !important;
@@ -6089,14 +6090,18 @@ body.home .site-inner {
   overflow-y: hidden;
   color: white; }
 
+/* Share Icons */
 .share-before.share-filled.share-medium .share {
-  background-color: black;
-  font-family: "Frutiger LT W01_55 Roma1475738", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  background-color: #f26522;
+  font-family: "Frutiger LT W01_55 Roma1475738", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
 .share-before.share-filled.share-medium .count {
-  border-color: black;
-  color: black; }
+  border-color: #f26522;
+  color: #f26522;
+  display: none; }
 .share-before.share-filled.share-medium:hover .count {
-  background-color: #c8c8c8 !important; }
+  background-color: #fef2ec !important; }
 
 .sidr {
   position: fixed;
@@ -6140,5 +6145,11 @@ body.home .site-inner {
   margin-left: -1px;
   border-radius: 0;
   z-index: 400; }
+.wider-dropdown .dropdown-menu {
+  min-width: 316px; }
+.left-dropdown .dropdown-menu {
+  left: auto;
+  right: 100%;
+  margin-right: -1px; }
 
 /*# sourceMappingURL=style.css.map */
