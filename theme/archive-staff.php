@@ -26,7 +26,7 @@ function staff_directory() {
           <td><?php echo types_render_field('email');?></td>
           <td>
             <a href="tel:<?php echo $phone_number;?>">
-              <?php echo substr($phone_number, 0, 3)."-".substr($phone_number, 4,3)."-".substr($phone_number, 6);?>
+              <?php echo substr($phone_number, 0, 3)."-".substr($phone_number, 3,3)."-".substr($phone_number, 6);?>
             </a>
           </td>
         </tr>
