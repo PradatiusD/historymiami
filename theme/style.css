@@ -6035,7 +6035,8 @@ body.home .site-inner {
     font-size: 1.2em;
     display: inline-block;
     position: relative;
-    top: 2px; }
+    top: 2px;
+    text-shadow: 1px 1px 0.5em black; }
     @media only screen and (max-width: 1140px) {
       .swiper-slide .swiper-dates {
         display: block;
