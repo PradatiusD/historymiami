@@ -5,35 +5,38 @@ function homepage_slider() {
   $timestamp = Utilities::get_timestamp();
 
   $args = array(
-    "post_type"  => array("exhibition","event"),
+    "post_type"  => array("exhibition","event", "city-tour"),
     "orderby"    => "meta_value_num",
     "meta_key"   => "wpcf-end-time",
     'order'     => 'ASC',
     "meta_query" => array(
-        array(
-          "key" => "wpcf-end-time",
-          "value" => $timestamp,
-          "compare" => ">"
-        )
+      array(
+        "key" => "wpcf-end-time",
+        "value" => $timestamp,
+        "compare" => ">"
+      ),
+      array(
+        "key" => "wpcf-feature-on-slider",
+        "value"=> "false",
+        "compare" => "NOT EXISTS"
       )
+    )
   );
 
-  // The Query
-  $query = new WP_Query( $args );
+  $query = new WP_Query($args);
 
-  // The Loop
   if ($query->have_posts()) { ?>
     <section class="swiper-container">
       <div class="swiper-wrapper">
 
     <?php
     while ($query->have_posts()) {
+
       $query->the_post();
 
       $post_title = get_the_title();
-
       $post_title = Utilities::split_post_title($post_title);
-
+      $post_type  = str_replace('-', ' ', get_post_type());
     ?>
 
         <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
@@ -49,7 +52,7 @@ function homepage_slider() {
                   ?>
                 </a>
               </h3>
-              <span class="badge"><?php echo get_post_type();?></span>
+              <span class="badge"><?php echo $post_type;?></span>
               <small class="swiper-dates">
                 <?php echo Utilities::get_post_dates(); ?>
               </small>
