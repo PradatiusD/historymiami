@@ -8,22 +8,32 @@ function homepage_slider() {
     "post_type"  => array("exhibition","event", "city-tour"),
     "orderby"    => "meta_value_num",
     "meta_key"   => "wpcf-end-time",
-    'order'     => 'ASC',
+    'order'      => "ASC",
     "meta_query" => array(
       array(
-        "key" => "wpcf-end-time",
-        "value" => $timestamp,
+        "key"     => "wpcf-end-time",
+        "value"   => $timestamp,
         "compare" => ">"
       ),
       array(
-        "key" => "wpcf-feature-on-slider",
-        "value"=> "false",
-        "compare" => "NOT EXISTS"
+        "relation" => "OR",
+        array(
+          "key"     => "wpcf-feature-on-slider",
+          "value"   => "false",
+          "compare" => "!="
+        ),
+        array(
+          "key"     => "wpcf-feature-on-slider",
+          "value"   => "false",
+          "compare" => "NOT EXISTS"
+        )
       )
     )
   );
 
   $query = new WP_Query($args);
+
+  // Utilities::log($query->request);
 
   if ($query->have_posts()) { ?>
     <section class="swiper-container">
@@ -37,28 +47,29 @@ function homepage_slider() {
       $post_title = get_the_title();
       $post_title = Utilities::split_post_title($post_title);
       $post_type  = str_replace('-', ' ', get_post_type());
+
     ?>
 
-        <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
-          <div class="container">
-            <div class="swiper-overlay">
-              <h3>
-                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                  <?php 
-                    echo '<span class="title">'.$post_title["title"].'</span>';
-                    if (isset($post_title["subtitle"])) {
-                      echo '<span class="subtitle">'.$post_title["subtitle"].'</span>';
-                    }
-                  ?>
-                </a>
-              </h3>
-              <span class="badge"><?php echo $post_type;?></span>
-              <small class="swiper-dates">
-                <?php echo Utilities::get_post_dates(); ?>
-              </small>
-            </div>
+      <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
+        <div class="container">
+          <div class="swiper-overlay">
+            <h3>
+              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                <?php 
+                  echo '<span class="title">'.$post_title["title"].'</span>';
+                  if (isset($post_title["subtitle"])) {
+                    echo '<span class="subtitle">'.$post_title["subtitle"].'</span>';
+                  }
+                ?>
+              </a>
+            </h3>
+            <span class="badge"><?php echo $post_type;?></span>
+            <small class="swiper-dates">
+              <?php echo Utilities::get_post_dates(); ?>
+            </small>
           </div>
-        </article>
+        </div>
+      </article>
 
       <?php
     }  

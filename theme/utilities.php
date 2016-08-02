@@ -76,4 +76,8 @@ class Utilities {
 
     return $output;
   }
+
+  public static function log ($data) {
+    echo "<pre>".$data."</pre>";
+  }
 }
