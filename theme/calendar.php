@@ -6,7 +6,10 @@ function output_post_data_json () {
 
 $args = array(
   "post_type" => array('city-tour','event'),
-  "nopaging"  => true
+  "nopaging"  => true,
+  "orderby"   => "meta_value_num",
+  "meta_key"  => "wpcf-start-time",
+  "order"     => "ASC"
 );
 
 $post_query = new WP_Query($args);
@@ -18,7 +21,7 @@ if ( $post_query->have_posts() ) {
 
     $post_query->the_post();
 
-    $date_format = array("format"=>"raw");
+    $date_format = array("format"=>"U");
 
     $json_post = array(
       "title" => get_the_title(),
@@ -40,10 +43,12 @@ if ( $post_query->have_posts() ) {
 
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-wp_enqueue_style('fullcalendar.css', get_stylesheet_directory_uri() . "/bower_components/fullcalendar/dist/fullcalendar.css", array(), '2.9.0', 'all' );
-wp_enqueue_script('moment',          get_stylesheet_directory_uri() . "/bower_components/moment/min/moment.min.js", array(), '2.14.1', true);
-wp_enqueue_script('fullcalendar.js', get_stylesheet_directory_uri() . "/bower_components/fullcalendar/dist/fullcalendar.min.js" , array('jquery', 'moment'), '2.9.0', true);
-wp_enqueue_script('fullcalendar-client', get_stylesheet_directory_uri() . "/js/calendar.js" , array('fullcalendar.js'), '2.9.0', true);
+$bower_base = get_stylesheet_directory_uri() . "/bower_components";
+
+wp_enqueue_style('fullcalendar.css', $bower_base ."/fullcalendar/dist/fullcalendar.css", array(), '2.9.2', 'all' );
+wp_enqueue_script('moment',          $bower_base ."/moment/min/moment.min.js", array(), '2.14.1', true);
+wp_enqueue_script('fullcalendar.js', $bower_base ."/fullcalendar/dist/fullcalendar.min.js" , array('jquery', 'moment'), '2.9.2', true);
+wp_enqueue_script('fullcalendar-client', get_stylesheet_directory_uri() . "/js/calendar.js" , array('fullcalendar.js'), '2.9.2', true);
 
 genesis();
 

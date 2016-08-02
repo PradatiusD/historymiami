@@ -283,3 +283,4 @@ function include_all_staff_members( $query ) {
     $query->set('order','ASC');
   }
 }
+

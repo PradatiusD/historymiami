@@ -1,14 +1,17 @@
 <?php
 
+// when the init hook fires
+remove_filter('posts_orderby', 'CPTOrderPosts', 99, 2);
+
 function homepage_slider() {
 
   $timestamp = Utilities::get_timestamp();
 
   $args = array(
     "post_type"  => array("exhibition","event", "city-tour"),
-    "orderby"    => "meta_value_num",
-    "meta_key"   => "wpcf-end-time",
-    'order'      => "ASC",
+    "orderby"    => array(
+      "post_type" => "DESC"
+    ),
     "meta_query" => array(
       array(
         "key"     => "wpcf-end-time",
@@ -50,7 +53,7 @@ function homepage_slider() {
 
     ?>
 
-      <article class="swiper-slide" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
+      <article class="swiper-slide swiper-<?php echo get_post_type();?>" style="background-image: url('<?php the_post_thumbnail_url('full'); ?>');">
         <div class="container">
           <div class="swiper-overlay">
             <h3>

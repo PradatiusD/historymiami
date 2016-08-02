@@ -1,21 +1,26 @@
 (function ($) {
 
+function formatTime (unixTimestamp) {
+
+  var timestamp = parseInt(unixTimestamp) * 1000;
+  return new Date(timestamp);
+}
+
 var options = {
   header: {
     left: 'prev,next today',
     center: 'title',
     right: 'month,agendaWeek,agendaDay'
   },
+  timezone: 'UTC',
   events: calendarData.map(function (calendarEvent) {
 
-    calendarEvent.start = new Date(calendarEvent.start);
-    calendarEvent.end   = new Date(calendarEvent.end);
+    calendarEvent.start = formatTime(calendarEvent.start);
+    calendarEvent.end   = formatTime(calendarEvent.end);
 
     return calendarEvent;
   })
 };
-
-console.log(options.events.length)
 
 
 $('#calendar').fullCalendar(options);
