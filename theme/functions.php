@@ -6,7 +6,7 @@ include_once(get_template_directory() . '/lib/init.php' );
 //* Child theme (do not remove)
 define('CHILD_THEME_NAME', 'History Miami Child Theme');
 define('CHILD_THEME_URL', 'http://github.com/PradatiusD/historymiami');
-define('CHILD_THEME_VERSION', '1.0.10');
+define('CHILD_THEME_VERSION', '1.0.11');
 
 
 //* Add HTML5 markup structure
@@ -36,6 +36,7 @@ add_theme_support('genesis-menus', array( 'primary' => __( 'Primary Navigation M
 
 include_once("navigation.php");
 include_once("utilities.php");
+include_once("admin-extensions.php");
 Utilities::local_livereload();
 
 // Header Stylesheets

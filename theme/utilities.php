@@ -22,14 +22,17 @@ class Utilities {
     }  
   }
 
+  public static function timestamp_to_date ($timestamp) {
+    $date = new DateTime();
+    $date->setTimestamp($timestamp);
+    return $date;
+  } 
+
 
   public static function format_date_text($start_time, $end_time) {
 
-    $start_t = new DateTime();
-    $start_t->setTimestamp($start_time);
-
-    $end_t   = new DateTime();
-    $end_t->setTimestamp($end_time);
+    $start_t = self::timestamp_to_date($start_time);
+    $end_t   = self::timestamp_to_date($end_time);
 
     $calendar_f = 'Y-m-d';
 
