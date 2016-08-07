@@ -1,6 +1,5 @@
 <?php
 
-// when the init hook fires
 remove_filter('posts_orderby', 'CPTOrderPosts', 99, 2);
 
 function homepage_slider() {
@@ -10,7 +9,8 @@ function homepage_slider() {
   $args = array(
     "post_type"  => array("exhibition","event", "city-tour"),
     "orderby"    => array(
-      "post_type" => "DESC"
+      "post_type"  => "DESC",
+      "menu_order" => "ASC"
     ),
     "meta_query" => array(
       array(
@@ -36,7 +36,7 @@ function homepage_slider() {
 
   $query = new WP_Query($args);
 
-  // Utilities::log($query->request);
+  Utilities::log($query->request);
 
   if ($query->have_posts()) { ?>
     <section class="swiper-container">

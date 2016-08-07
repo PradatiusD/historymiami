@@ -255,6 +255,8 @@ function available_post_type ($query) {
       ));
     }
 
+
+
     $query->set('meta_query', $filter);
   }
 
@@ -285,3 +287,26 @@ function include_all_staff_members( $query ) {
   }
 }
 
+add_action('pre_get_posts', 'chronological_city_tour_archive');
+function chronological_city_tour_archive( $query ) {
+
+  $is_chronological_archive = (is_post_type_archive('city-tour') || is_post_type_archive('event'));
+
+  if ($query->is_main_query() && $is_chronological_archive) {
+    remove_filter('posts_orderby', 'CPTOrderPosts', 99, 2);
+    $query->set('orderby', 'meta_value_num');
+    $query->set('meta_key','wpcf-start-time');
+    $query->set('order',   'ASC');
+  }
+}
+
+remove_action( 'genesis_after_endwhile', 'genesis_posts_nav');
+add_action( 'genesis_after_endwhile', 'bootstrap_posts_nav');
+function bootstrap_posts_nav () {
+  ob_start();
+  genesis_posts_nav();
+  $nav = ob_get_clean();
+  $nav = preg_replace('/<div (class=".*?")>/', '<div class="archive-pagination text-center">', $nav);
+  $nav = str_replace("<ul>", "<ul class=\"pagination\">", $nav);
+  echo $nav;
+}
