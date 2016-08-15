@@ -13,6 +13,8 @@
 if ( !defined('ABSPATH') )
   die('-1');
 
+require_once(plugin_dir_path( __FILE__ )  . 'constant-contact.php');
+
 
 class Address_Widget extends WP_Widget {
   function __construct() {
@@ -127,12 +129,14 @@ class Instagram_Widget extends WP_Widget {
 }
 
 
+
 function add_history_miami_widgets () {
   register_widget('Address_Widget');
   register_widget('Contact_Widget');
   register_widget('Social_Widget');
   register_widget('Affiliate_Widget');
   register_widget('Instagram_Widget');
+  register_widget('Constant_Contact_Widget');
 }
 
 

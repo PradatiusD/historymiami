@@ -1,5 +1,5 @@
 {
-    "name": "dprada/historymiami",
+    "name": "dprada/historymiami/plugin",
     "authors": [
         {
             "name": "PradatiusD",
@@ -7,9 +7,9 @@
         }
     ],
     "require": {
-        "madcoda/php-youtube-api": "1.*"
+        "constantcontact/constantcontact": "2.1.*"
     },
     "config": {
-        "vendor-dir": "theme/lib"
+        "vendor-dir": "lib"
     }
 }
