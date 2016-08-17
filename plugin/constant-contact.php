@@ -36,7 +36,7 @@ class Constant_Contact_Widget extends WP_Widget {
   public function form( $instance ) {
     $title  = !empty($instance['title'])       ? $instance['title'] : __('Form Title', 'text_domain');
     $desc   = !empty($instance['description']) ? $instance['description'] : __('Form description', 'text_domain');
-    $button = !empty($instance['button'])      ? $instance['button'] : __('Form button label', 'text_domain');
+    $button = !empty($instance['button-label'])? $instance['button-label'] : __('Form button label', 'text_domain');
     ?>
     <p>
     <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label> 
@@ -48,8 +48,8 @@ class Constant_Contact_Widget extends WP_Widget {
     </p>
 
     <p>
-    <label for="<?php echo esc_attr( $this->get_field_id( 'button' ) ); ?>"><?php _e( esc_attr( 'Button Label:' ) ); ?></label> 
-    <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button' ) ); ?>" type="text" value="<?php echo esc_attr( $button ); ?>">
+    <label for="<?php echo esc_attr( $this->get_field_id( 'button-label' ) ); ?>"><?php _e( esc_attr( 'Button Label:' ) ); ?></label> 
+    <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button-label' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button-label' ) ); ?>" type="text" value="<?php echo esc_attr( $button ); ?>">
     </p>
 
     <?php 
@@ -57,8 +57,9 @@ class Constant_Contact_Widget extends WP_Widget {
 
   public function update( $new_instance, $old_instance ) {
     $instance = array();
-    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-    $instance['description'] = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+    $instance['title']        = (!empty($new_instance['title'])) ? strip_tags( $new_instance['title']) : '';
+    $instance['description']  = (!empty($new_instance['description'])) ? strip_tags( $new_instance['description']) : '';
+    $instance['button-label'] = (!empty($new_instance['button-label'])) ? strip_tags( $new_instance['button-label']) : '';
 
     return $instance;
   }
@@ -125,7 +126,8 @@ class Constant_Contact_Widget extends WP_Widget {
     }
   }
   
-  function widget( $args, $instance ) {
+  function widget( $args, $instance) {
+
     ob_start();
 
     $cc = new ConstantContact(CC_API_KEY);
@@ -148,7 +150,8 @@ class Constant_Contact_Widget extends WP_Widget {
 
     $title  = !empty($instance['title'])       ? $instance['title']      :'Newsletter Signup';
     $desc   = !empty($instance['description']) ? $instance['description']:'Please go to the widget menu to customize this title.';
-    $button = !empty($instance['button'])      ? $instance['button']     :'Sign Up';
+    $button = !empty($instance['button-label'])? $instance['button-label']:'Sign Up';
+
     ?>
 
       <h4><?php echo $title;?></h4>
