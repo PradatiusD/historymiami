@@ -33,6 +33,36 @@ class Constant_Contact_Widget extends WP_Widget {
   }
 
 
+  public function form( $instance ) {
+    $title  = !empty($instance['title'])       ? $instance['title'] : __('Form Title', 'text_domain');
+    $desc   = !empty($instance['description']) ? $instance['description'] : __('Form description', 'text_domain');
+    $button = !empty($instance['button'])      ? $instance['button'] : __('Form button label', 'text_domain');
+    ?>
+    <p>
+    <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label> 
+    <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+    </p>
+
+    <label for="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>"><?php _e( esc_attr( 'Description:' ) ); ?></label> 
+    <textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'description' ) ); ?>"><?php echo esc_html( $desc ); ?></textarea>
+    </p>
+
+    <p>
+    <label for="<?php echo esc_attr( $this->get_field_id( 'button' ) ); ?>"><?php _e( esc_attr( 'Button Label:' ) ); ?></label> 
+    <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button' ) ); ?>" type="text" value="<?php echo esc_attr( $button ); ?>">
+    </p>
+
+    <?php 
+  }
+
+  public function update( $new_instance, $old_instance ) {
+    $instance = array();
+    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $instance['description'] = ( ! empty( $new_instance['description'] ) ) ? strip_tags( $new_instance['description'] ) : '';
+
+    return $instance;
+  }
+
   function addUserToLists ($cc) {
 
     $email      = $_POST['email'];
@@ -116,44 +146,66 @@ class Constant_Contact_Widget extends WP_Widget {
       $this->addUserToLists($cc);
     }
 
+    $title  = !empty($instance['title'])       ? $instance['title']      :'Newsletter Signup';
+    $desc   = !empty($instance['description']) ? $instance['description']:'Please go to the widget menu to customize this title.';
+    $button = !empty($instance['button'])      ? $instance['button']     :'Sign Up';
     ?>
-      <section>
-        <h3>Join Newsletter</h3>
 
-        <form class="form-horizontal" name="submitContact" id="submitContact" method="POST" action="<?php echo $path;?>">
+      <h4><?php echo $title;?></h4>
+      <p><?php echo $desc;?></p>
 
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input class="form-control" type="email" id="email" name="email" placeholder="Email Address">
-          </div>
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input class="form-control" type="text" id="first_name" name="first_name" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last Name">
-          </div>
-          <div class="form-group">
+      <a id="hm-newsletter-btn" class="btn btn-block btn-primary" href="#"><?php echo $button;?></a>
 
-            <label for="list">List</label>
-              <?php foreach ($lists as $list):?>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" value="<?php echo $list["id"];?>" name="list[]">
-                    <?php echo $list["name"];?>
-                  </label>
+      <!-- Newsletter Sign Up Modal -->
+      <div class="modal fade" id="newsletter-modal" tabindex="-1" role="dialog" aria-labelledby="newsletter-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"><?php echo $title;?></h4>
+            </div>
+            <div class="modal-body">
+              <p><?php echo $desc;?></p>
+
+              <form name="submitContact" id="submitContact" method="POST" action="<?php echo $path;?>">
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" type="email" id="email" name="email" placeholder="Email Address">
                 </div>
-              <?php endforeach;?>
+                <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input class="form-control" type="text" id="first_name" name="first_name" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+
+                  <label for="list">Email List</label>
+                    <?php foreach ($lists as $list):?>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="<?php echo $list["id"];?>" name="list[]">
+                          <?php echo $list["name"];?>
+                        </label>
+                      </div>
+                    <?php endforeach;?>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="<?php echo $button;?>" class="btn btn-primary btn-block"/>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary btn-block"/>
-          </div>
-        </form>
+        </div>
+      </div>
 
 
-      </section>
     <?php
+
+    wp_enqueue_script('hm-newsletter', plugins_url( 'js/newsletter-form.js', __FILE__ ), array('jquery','bootstrap-modal'), '1.0.0', true);
     echo ob_get_clean();
   }
 } 
