@@ -62,6 +62,10 @@ class Utilities {
     $start_time = types_render_field("start-time",$date_format);
     $end_time   = types_render_field("end-time",$date_format);
 
+    if (empty($end_time) && empty($start_time)) {
+      return "";
+    }
+
     return self::format_date_text($start_time, $end_time);
   }
 

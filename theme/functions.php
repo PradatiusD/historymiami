@@ -207,7 +207,7 @@ function available_post_type ($query) {
   $is_target_archive = is_archive() && isset($queried_type) && in_array($queried_type, $post_types);
   $has_query_string  = isset($_GET['t']) && in_array($_GET['t'], Utilities::$availability_types);
 
-  if ($is_target_archive) {
+  if ($is_target_archive && !is_admin()) {
 
     $timestamp = Utilities::get_timestamp();
     $filter = array();

@@ -43,10 +43,10 @@ function custom_columns ($column, $post_id) {
 
   switch ($column) {
     case 'start-time':
-      echo Utilities::timestamp_to_date($meta['wpcf-start-time'][0])->format($date_format);
+      echo isset($meta['wpcf-start-time']) ? Utilities::timestamp_to_date($meta['wpcf-start-time'][0])->format($date_format): "N/A";
       break;
     case 'end-time':
-      echo Utilities::timestamp_to_date($meta['wpcf-end-time'][0])->format($date_format);
+      echo isset($meta['wpcf-end-time']) ? Utilities::timestamp_to_date($meta['wpcf-end-time'][0])->format($date_format): "N/A";
       break;
     case 'feat-image':
       echo get_the_post_thumbnail($post_id, 'thumb');
