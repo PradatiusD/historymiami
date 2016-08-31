@@ -14,9 +14,17 @@ function homepage_slider() {
     ),
     "meta_query" => array(
       array(
-        "key"     => "wpcf-end-time",
-        "value"   => $timestamp,
-        "compare" => ">"
+        "relation" => "OR",
+        array(
+          "key"     => "wpcf-end-time",
+          "value"   => $timestamp,
+          "compare" => ">"
+        ),
+        array(
+          "key"     => "wpcf-is-permanent",
+          "value"   => "true",
+          "compare" => "="
+        )
       ),
       array(
         "relation" => "OR",
@@ -36,7 +44,7 @@ function homepage_slider() {
 
   $query = new WP_Query($args);
 
-  // Utilities::log($query->request);
+  Utilities::log($query->request);
 
   if ($query->have_posts()) { ?>
     <section class="swiper-container">

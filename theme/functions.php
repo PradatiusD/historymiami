@@ -249,9 +249,17 @@ function available_post_type ($query) {
     } else {
 
       array_push($filter, array(
-        'key' => 'wpcf-end-time', 
-        'value' => $timestamp, 
-        'compare' => '>',
+        "relation" => "OR",
+        array(
+          "key"     => "wpcf-end-time",
+          "value"   => $timestamp,
+          "compare" => ">"
+        ),
+        array(
+          "key"     => "wpcf-is-permanent",
+          "value"   => "true",
+          "compare" => "="
+        )
       ));
     }
 
