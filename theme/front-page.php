@@ -44,7 +44,7 @@ function homepage_slider() {
 
   $query = new WP_Query($args);
 
-  Utilities::log($query->request);
+  // Utilities::log($query->request);
 
   if ($query->have_posts()) { ?>
     <section class="swiper-container">

@@ -1,9 +1,9 @@
 <?php
 
-/**
-* Template Name: YouTube Channel
-* Description: Show the YouTube contents of the HistoryMiami Channel
-*/
+/*
+ * Template Name: YouTube Channel
+ * Description: Show the YouTube contents of the HistoryMiami Channel
+ */
 
 require_once('lib/autoload.php');
 
