@@ -17,7 +17,6 @@ var options = {
   resolution: 'standard_resolution',
   limit: imageLimit,
   sortBy: 'none'
-
 };
 
 var feed = new Instafeed(options);

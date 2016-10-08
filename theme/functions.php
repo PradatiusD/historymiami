@@ -6,7 +6,7 @@ include_once(get_template_directory() . '/lib/init.php' );
 //* Child theme (do not remove)
 define('CHILD_THEME_NAME', 'History Miami Child Theme');
 define('CHILD_THEME_URL', 'http://github.com/PradatiusD/historymiami');
-define('CHILD_THEME_VERSION', '1.0.11');
+define('CHILD_THEME_VERSION', '1.0.2');
 
 
 //* Add HTML5 markup structure
@@ -317,4 +317,15 @@ function bootstrap_posts_nav () {
   $nav = preg_replace('/<div (class=".*?")>/', '<div class="archive-pagination text-center">', $nav);
   $nav = str_replace("<ul>", "<ul class=\"pagination\">", $nav);
   echo $nav;
+}
+
+
+add_action('genesis_before_sidebar_widget_area','per_page_custom_content');
+
+function per_page_custom_content () {
+
+  if (is_single() || is_page()) {
+    $content = types_render_field("pre-sidebar-content");
+    echo $content ? $content : "";
+  }
 }
